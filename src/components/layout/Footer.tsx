@@ -1,7 +1,7 @@
 import React from "react";
 import { Github, Linkedin, Mail } from "lucide-react";
-import { profile } from "../profile";
-import Button from "./Button";
+import { profile } from "../../profile";
+import Button from "../ui/Button";
 
 type FooterLink = { href: string; label: string; icon?: React.ReactNode };
 

@@ -1,89 +1,19 @@
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Timeline from "./components/Timeline";
-import Projects from "./components/Projects";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
-import Skills from "./components/Skills";
+import Navbar from "./components/layout/Navbar";
+import Hero from "./components/sections/Hero";
+import Timeline from "./components/sections/Timeline";
+import Projects from "./components/sections/Projects";
+import Contact from "./components/sections/Contact";
+import Footer from "./components/layout/Footer";
+import Skills from "./components/sections/Skills";
 import { Github, Linkedin, Mail } from "lucide-react";
-import type { TimelineItem } from "./components/Timeline";
 import { profile } from "./profile";
-import { projects as importedProjects } from "./projects";
+import { projects } from "./projects";
+import { experiences } from "./experiences";
+import { formations } from "./formations";
 
 function App() {
   const { name, email } = profile;
 
-  // Expériences professionnelles
-  const experiences: TimelineItem[] = [
-    {
-      id: "exp-alt-teleric",
-      title: "Développeur d’application (Alternance)",
-      company: "Teleric",
-      period: "Septembre 2022 — Aujourd’hui",
-      location: "Amiens, France",
-      description:
-        "Développement d'un interfaçage pour la récupération de données de pointages entre Teleric et une autre entreprise de pointage (Laravel, Blade). Mise en place d'applications sous container Docker. Développement d'un générateur de PDF personnalisable, avec paramétrage via interface web en Vue.js et Laravel. Serveur de génération de PDF en micro-service avec l'outil wkhtmltopdf. Refonte du planning des utilisateurs de l'application mobile codée en Flutter avec l'architecture BLoC. Refonte de page Blade en Vue.js, et ainsi, refonte du back-end en Laravel pour convenir aux nouvelles vues. Utilisation des SGBD MariaDB, PostgreSQL et SQLite.",
-      skills: [
-        "Laravel",
-        "Vue.js",
-        "Blade",
-        "CSS/SCSS",
-        "JavaScript/TypeScript",
-        "Flutter",
-        "Docker",
-        "MariaDB/PostgreSQL/SQLite",
-        "Bootstrap",
-        "wkhtmltopdf",
-      ],
-    },
-    {
-      id: "exp-stage-teleric",
-      title: "Développeur web (Stage)",
-      company: "Teleric",
-      period: "Mars 2022 - Juin 2022",
-      location: "Amiens, France",
-      description:
-        "Développement d’application web de pointage par QR code (Laravel, Blade). Correction de bugs, amélioration de fonctionnalités et ajout de routes API.",
-      skills: ["Laravel", "Blade", "Bootstrap", "API", "QR Code"],
-    },
-  ];
-
-  // Formations
-  const formations: TimelineItem[] = [
-    {
-      id: "form-miage",
-      title: "Master MIAGE",
-      company: "UPJV Amiens",
-      period: "2023 — Aujourd’hui",
-      location: "Amiens, France",
-      description:
-        "Option : Organisation des systèmes d’information de l’entreprise.",
-      skills: ["Systèmes d’information", "Organisation"],
-    },
-    {
-      id: "form-rgi",
-      title: "Licence Professionnelle RGI",
-      company: "IUT Amiens",
-      period: "2022 — 2023",
-      location: "Amiens, France",
-      description: "Option : ERP (Enterprise Resource Planning).",
-      skills: ["Réseaux", "ERP"],
-    },
-    {
-      id: "form-dut",
-      title: "DUT Informatique",
-      company: "IUT Amiens",
-      period: "2020 — 2022",
-      location: "Amiens, France",
-      description: "Spécialité : IoT (Internet of Things).",
-      skills: ["IoT"],
-    },
-  ];
-
-  // Adaptation des projets importés au format attendu par le composant Projects
-  const projects = importedProjects;
-
-  // Mapping utilitaire (source unique: profile.socials)
   const heroSocials = profile.socials.map((s) => {
     let icon: React.ReactNode;
     switch (s.kind) {

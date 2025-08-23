@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
-import type { Project } from "../projects";
+import type { Project } from "../../projects";
 import { ExternalLink, Layers, Filter } from "lucide-react";
-import Card from "./Card";
+import Card from "../ui/Card";
 
 type ProjectsProps = {
   items: Project[];

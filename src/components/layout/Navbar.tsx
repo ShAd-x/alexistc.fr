@@ -7,7 +7,6 @@ type NavbarProps = {
 
 export default function Navbar({ name }: NavbarProps) {
   const [open, setOpen] = useState(false);
-  // plus de thème
 
   const links = [
     {
@@ -27,7 +26,7 @@ export default function Navbar({ name }: NavbarProps) {
 
   return (
     <>
-      {/* Header (classe calculée pour éviter état incohérent) */}
+      {/* Header */}
       <header className={headerClass}>
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:py-4">
           {/* Brand */}
@@ -52,7 +51,6 @@ export default function Navbar({ name }: NavbarProps) {
                 {l.label}
               </a>
             ))}
-            {/* toggle supprimé */}
           </div>
 
           {/* Mobile: menu + theme */}

@@ -1,7 +1,7 @@
 import { FileDown } from "lucide-react";
 import React from "react";
-import Button from "./Button";
-import ProfileImage from "./ProfileImage";
+import Button from "../ui/Button";
+import ProfileImage from "../ui/ProfileImage";
 
 type SocialLink = {
   href: string;

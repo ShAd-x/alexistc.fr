@@ -1,6 +1,6 @@
 import { Mail, Copy, Check } from "lucide-react";
 import { useState, useRef } from "react";
-import Button from "./Button";
+import Button from "../ui/Button";
 
 type ContactProps = {
   email: string;
