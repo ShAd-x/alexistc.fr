@@ -13,7 +13,7 @@ export const projects: Project[] = [
   {
     id: "piesente",
     title: "Piesente – Deuxième année de master",
-    imageSrc: "",
+    imageSrc: "/img/piesente.webp",
     description:
       "Projet universitaire en équipe, refonte complète d’un site d’association (analyse besoins, maquettes, dev complet).",
     technologies: ["Laravel", "PHP", "JavaScript", "HTML", "CSS"],
@@ -30,7 +30,7 @@ export const projects: Project[] = [
   {
     id: "korusmc",
     title: "Serveur Minecraft KorusMC",
-    imageSrc: "",
+    imageSrc: "/img/korusmc.webp",
     description:
       "Création et gestion d’un serveur Minecraft avec base de données, coordination d’équipe, outils collaboratifs, rédaction de cahiers des charges. Expérience forte en gestion de projet agile, organisation d’équipe et développement backend.",
     technologies: ["Java", "Kotlin", "MySQL", "Agile", "Gestion de projet"],
@@ -48,7 +48,7 @@ export const projects: Project[] = [
   {
     id: "lotary",
     title: "Serveur Minecraft Lotary",
-    imageSrc: "",
+    imageSrc: "/img/lotary.webp",
     description:
       "Participation comme développeur dans une équipe, développement de plusieurs fonctionnalités pour un serveur Minecraft.",
     technologies: ["Java", "Minecraft"],
@@ -59,7 +59,7 @@ export const projects: Project[] = [
   {
     id: "fasttyping",
     title: "Extension VSCode FastTyping",
-    imageSrc: "",
+    imageSrc: "/img/fasttyping.webp",
     description:
       "Développement d’une extension Visual Studio Code pour automatiser des raccourcis d’écriture (ex: -- devient →).",
     technologies: ["TypeScript", "VSCode API"],
@@ -81,7 +81,7 @@ export const projects: Project[] = [
   {
     id: "medicit",
     title: "MedicIT – Première année de master",
-    imageSrc: "",
+    imageSrc: "/img/medicit.webp",
     description:
       "Application de gestion d’un cabinet médical (comptes patients/médecins, validation, ordonnances).",
     technologies: ["Laravel", "PHP", "JavaScript", "HTML", "CSS"],
