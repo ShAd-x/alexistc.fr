@@ -155,7 +155,7 @@ export default function Projects({ items, title = "Projets" }: ProjectsProps) {
                           className="inline-flex items-center gap-1 text-sm font-medium text-gray-400 cursor-not-allowed mt-4"
                           disabled
                         >
-                          Voir le projet
+                          Pas de lien vers ce projet
                           <ExternalLink size={16} />
                         </button>
                       )}

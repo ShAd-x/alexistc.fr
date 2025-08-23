@@ -43,7 +43,6 @@ export const projects: Project[] = [
       "Minecraft",
     ],
     category: "Professionnel",
-    link: "https://github.com/korusmc/korusmc",
   },
   {
     id: "lotary",
@@ -54,7 +53,6 @@ export const projects: Project[] = [
     technologies: ["Java", "Minecraft"],
     tags: ["Backend", "Jeu vidéo", "Travail en équipe", "Serveur"],
     category: "Professionnel",
-    link: "https://github.com/lotary/lotary",
   },
   {
     id: "fasttyping",
@@ -87,7 +85,6 @@ export const projects: Project[] = [
     technologies: ["Laravel", "PHP", "JavaScript", "HTML", "CSS"],
     tags: ["Fullstack", "Web", "Santé", "Gestion", "CRUD"],
     category: "Académique",
-    link: "https://github.com/medicit/medicit",
   },
   {
     id: "app-bancaire",
