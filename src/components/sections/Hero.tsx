@@ -81,6 +81,7 @@ export default function Hero({
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <Button
               href={cvHref ?? "#"}
+              targetBlank={true}
               icon={<FileDown size={18} />}
               aria-label="Télécharger mon CV"
               title="Télécharger mon CV"
