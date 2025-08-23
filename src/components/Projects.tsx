@@ -9,14 +9,12 @@ type ProjectsProps = {
 };
 
 export default function Projects({ items, title = "Projets" }: ProjectsProps) {
-  // Kinds présents dans les données
   const categories = useMemo(() => {
     const set = new Set<string>();
     for (const p of items) if (p.category) set.add(p.category);
     return Array.from(set);
   }, [items]);
 
-  // Sélection initiale: tout sauf "Personnel"
   const initialSelected = useMemo(
     () => new Set<string>(categories.filter((k) => k !== "Académique")),
     [categories]
@@ -36,7 +34,6 @@ export default function Projects({ items, title = "Projets" }: ProjectsProps) {
 
   const filtered = useMemo(() => {
     return items.filter((p) => {
-      // Les projets sans "category" sont affichés par défaut
       if (!p.category) return true;
       return selected.has(p.category);
     });
