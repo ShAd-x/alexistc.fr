@@ -2,6 +2,9 @@ import { FileDown } from "lucide-react";
 import React from "react";
 import Button from "../ui/Button";
 import ProfileImage from "../ui/ProfileImage";
+import { MapPin } from "lucide-react";
+import "./HeroWave.css";
+import "./HeroAvailable.css";
 
 type SocialLink = {
   href: string;
@@ -16,6 +19,7 @@ type HeroProps = {
   avatarSrc?: string;
   socials?: SocialLink[];
   cvHref?: string;
+  location?: string;
 };
 
 export default function Hero({
@@ -25,6 +29,7 @@ export default function Hero({
   avatarSrc,
   socials,
   cvHref,
+  location,
 }: HeroProps) {
   const [first, ...rest] = name.split(" ");
   const last = rest.join(" ");
@@ -32,17 +37,46 @@ export default function Hero({
   return (
     <section id="accueil" className="border-b border-gray-200/60">
       <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-4 py-12 md:grid-cols-2 md:py-20">
-        {/* Texte */}
         <div>
           <p className="text-sm font-medium text-indigo-600">Portfolio</p>
-          <h1 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+          <h1 className="relative mt-3 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+            <span
+              className="inline-block origin-bottom animate-wave text-3xl mr-2 align-middle relative -top-1"
+              role="img"
+              aria-label="salut"
+            >
+              👋
+            </span>
             Bonjour, je suis{" "}
             <span className="text-indigo-600">
               {first} {last}
             </span>
           </h1>
-          <p className="mt-3 text-lg font-medium text-gray-800">{title}</p>
-          <p className="mt-4 max-w-prose text-gray-600">{intro}</p>
+          <p className="relative mt-3 text-lg font-medium text-gray-800">
+            <span className="relative inline-block">
+              <span
+                className="absolute left-0 right-0 top-1/2 -translate-y-1/2 -z-10 bg-indigo-600 opacity-100 rotate-[-2deg] h-[36px] w-full rounded-md blur-sm"
+                aria-hidden="true"
+              />
+              <span className="relative px-2 text-white">{title}</span>
+            </span>
+          </p>
+          <p className="mt-4 max-w-prose text-gray-800">{intro}</p>
+          <div className="mt-2 flex items-center text-gray-800 text-sm font-medium">
+            <MapPin className="w-4 h-4 mr-1" />
+            {location}
+          </div>
+          <div className="mt-4 flex items-center gap-4">
+            <span className="flex items-center text-indigo-600 font-semibold">
+              <span
+                className="animate-blink mr-1 mb-1 text-2xl leading-none"
+                style={{ fontSize: "1.5em" }}
+              >
+                •
+              </span>
+              Disponible pour de nouvelles missions !
+            </span>
+          </div>
 
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <Button

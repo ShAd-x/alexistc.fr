@@ -61,6 +61,7 @@ function App() {
           avatarSrc={profile.avatar}
           cvHref={profile.cv}
           socials={heroSocials}
+          location={profile.location}
         />
         <Timeline
           sectionId="experiences-professionnelles"

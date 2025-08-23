@@ -16,12 +16,11 @@ export default function ProfileImage({
         className
       }
     >
-      {/* Effet gradient autour */}
       <div
-        className="absolute inset-0 z-0 rounded-full bg-gradient-to-tr from-indigo-600 via-indigo-500 to-indigo-700 blur-xl opacity-70 scale-110"
+        className="absolute inset-0 z-0 rounded-full bg-indigo-600 blur-xl opacity-100 scale-110"
         aria-hidden="true"
       />
-      <div className="relative z-10 h-full w-full overflow-hidden rounded-full border border-gray-200 shadow-sm">
+      <div className="relative z-10 h-full w-full overflow-hidden rounded-full border-2 border-black shadow-sm">
         <img
           src={src}
           alt={alt}
@@ -30,6 +29,9 @@ export default function ProfileImage({
         />
         <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/10" />
       </div>
+      <p className="absolute bottom-0 right-0 z-20 mb-2 mr-2 rounded-full bg-indigo-600 px-3 py-1 text-sm font-medium text-white shadow-lg">
+        C'est moi ^^
+      </p>
     </div>
   );
 }
