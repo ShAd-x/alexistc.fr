@@ -30,6 +30,6 @@ export const experiences: TimelineItem[] = [
     location: "Amiens, France",
     description:
       "Développement d’application web de pointage par QR code (Laravel, Blade). Correction de bugs, amélioration de fonctionnalités et ajout de routes API.",
-    skills: ["Laravel", "Blade", "Bootstrap", "API", "QR Code"],
+    skills: ["Laravel", "Blade", "Bootstrap"],
   },
 ];

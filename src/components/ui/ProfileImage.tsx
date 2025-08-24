@@ -30,7 +30,7 @@ export default function ProfileImage({
         <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/10" />
       </div>
       <p className="absolute bottom-0 right-0 z-20 mb-2 mr-2 rounded-full bg-indigo-600 px-3 py-1 text-sm font-medium text-white shadow-lg">
-        C'est moi ^^
+        Hey 👋 !
       </p>
     </div>
   );

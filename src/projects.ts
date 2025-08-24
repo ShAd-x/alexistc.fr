@@ -12,18 +12,12 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: "piesente",
-    title: "Piesente – Deuxième année de master",
+    title: "Piesente.fr – Deuxième année de master",
     imageSrc: "/img/piesente.webp",
     description:
-      "Projet universitaire en équipe, refonte complète d’un site d’association (analyse besoins, maquettes, dev complet).",
-    technologies: ["Laravel", "PHP", "JavaScript", "HTML", "CSS"],
-    tags: [
-      "Fullstack",
-      "Web",
-      "Association",
-      "Maquettage",
-      "Gestion de projet",
-    ],
+      "Projet universitaire en équipe de cinq personnes, consistant en la refonte complète du site web d’une association de marche. Nous avons assuré l’ensemble du cycle de production, depuis le recueil des besoins et la rédaction du cahier des charges en collaboration avec le client, jusqu’à la conception de maquettes fonctionnelles et la rédaction de documents techniques. J’ai également participé au développement complet de l’application, front-end et back-end, ainsi qu’à sa mise en production finale.",
+    technologies: ["Laravel", "PHP", "JavaScript", "Bootstrap"],
+    tags: ["Fullstack web", "Association", "Gestion de projet", "Figma"],
     category: "Professionnel",
     link: "https://github.com/piesente/piesente",
   },
@@ -32,8 +26,8 @@ export const projects: Project[] = [
     title: "Serveur Minecraft KorusMC",
     imageSrc: "/img/korusmc.webp",
     description:
-      "Création et gestion d’un serveur Minecraft avec base de données, coordination d’équipe, outils collaboratifs, rédaction de cahiers des charges. Expérience forte en gestion de projet agile, organisation d’équipe et développement backend.",
-    technologies: ["Java", "Kotlin", "MySQL", "Agile", "Gestion de projet"],
+      "Création et gestion d’un serveur Minecraft avec base de données, coordination d’équipe, outils collaboratifs, rédaction de cahiers des charges. Expérience forte en gestion de projet agile, organisation d’équipe et développement.",
+    technologies: ["Java", "Kotlin", "MariaDB"],
     tags: [
       "Backend",
       "Base de données",
@@ -50,8 +44,8 @@ export const projects: Project[] = [
     imageSrc: "/img/lotary.webp",
     description:
       "Participation comme développeur dans une équipe, développement de plusieurs fonctionnalités pour un serveur Minecraft.",
-    technologies: ["Java", "Minecraft"],
-    tags: ["Backend", "Jeu vidéo", "Travail en équipe", "Serveur"],
+    technologies: ["Java", "MySQL"],
+    tags: ["Backend", "Travail en équipe"],
     category: "Professionnel",
   },
   {
@@ -61,18 +55,18 @@ export const projects: Project[] = [
     description:
       "Développement d’une extension Visual Studio Code pour automatiser des raccourcis d’écriture (ex: -- devient →).",
     technologies: ["TypeScript", "VSCode API"],
-    tags: ["Extension", "Productivité", "Automatisation", "VSCode"],
+    tags: ["Extension", "Automatisation"],
     category: "Personnel",
     link: "https://github.com/tonprofil/fasttyping",
   },
   {
     id: "pokemon-ios",
     title: "Application iOS Pokémon",
-    imageSrc: "",
+    imageSrc: "/img/cleanpoke.png",
     description:
       "Application iOS qui consomme l’API PokéAPI, architecture propre (Clean Architecture), gestion réseau et affichage structuré.",
-    technologies: ["Swift", "Clean Architecture", "PokéAPI"],
-    tags: ["Mobile", "iOS", "API", "Architecture", "Swift"],
+    technologies: ["Swift", "PokéAPI"],
+    tags: ["Clean Architecture", "iOS", "API"],
     category: "Personnel",
     link: "https://github.com/tonprofil/pokemon-ios",
   },
@@ -82,8 +76,8 @@ export const projects: Project[] = [
     imageSrc: "/img/medicit.webp",
     description:
       "Application de gestion d’un cabinet médical (comptes patients/médecins, validation, ordonnances).",
-    technologies: ["Laravel", "PHP", "JavaScript", "HTML", "CSS"],
-    tags: ["Fullstack", "Web", "Santé", "Gestion", "CRUD"],
+    technologies: ["Laravel", "PHP", "JavaScript", "Bootstrap"],
+    tags: ["Fullstack web", "Santé"],
     category: "Académique",
   },
   {
@@ -92,7 +86,7 @@ export const projects: Project[] = [
     imageSrc: "",
     description:
       "Développement d’une appli bancaire avec gestion de comptes, dépôts/retraits, transactions, base de données relationnelle.",
-    technologies: ["Spring", "Java", "HTML"],
+    technologies: ["Spring", "Java"],
     tags: ["Backend", "Web", "Finance", "Base de données", "Transactions"],
     category: "Académique",
     link: "https://github.com/tonprofil/app-bancaire",
@@ -100,11 +94,11 @@ export const projects: Project[] = [
   {
     id: "gestion-materiel",
     title: "Application Web de Gestion de Matériel",
-    imageSrc: "",
+    imageSrc: "/img/angular.png",
     description:
       "Développement fullstack avec Angular (frontend) + Node.js/Express (backend) + MongoDB. Gestion d’équipements.",
-    technologies: ["Angular", "Node.js", "Express", "MongoDB"],
-    tags: ["Fullstack", "Web", "Gestion", "Matériel", "NoSQL"],
+    technologies: ["Angular", "Node.js", "Express", "MongoDB", "Mongoose"],
+    tags: ["Fullstack web", "Authentification JWT", "NoSQL"],
     category: "Académique",
     link: "https://github.com/tonprofil/gestion-materiel",
   },
@@ -114,7 +108,7 @@ export const projects: Project[] = [
     imageSrc: "",
     description: "Application CRUD en .NET Razor pour gestion de patients.",
     technologies: [".NET", "Razor"],
-    tags: ["Web", "CRUD", "Santé", "Gestion", ".NET"],
+    tags: ["Web", "CRUD"],
     category: "Académique",
     link: "https://github.com/tonprofil/gestion-patients",
   },

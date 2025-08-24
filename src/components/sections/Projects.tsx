@@ -100,12 +100,22 @@ export default function Projects({ items, title = "Projets" }: ProjectsProps) {
                 {/* Image */}
                 <div className="relative aspect-[16/9] overflow-hidden bg-gray-100">
                   {p.imageSrc ? (
-                    <img
-                      src={p.imageSrc}
-                      alt={p.title}
-                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-104 group-hover:brightness-105"
-                      loading="lazy"
-                    />
+                    <>
+                      <img
+                        src={p.imageSrc}
+                        alt={p.title}
+                        className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-104 group-hover:brightness-105"
+                        loading="lazy"
+                      />
+                      <button
+                        type="button"
+                        className="absolute bottom-2 right-2 z-10 rounded-full bg-white/80 px-2 py-1 text-xs font-semibold text-indigo-700 shadow hover:bg-indigo-600 hover:text-white transition"
+                        onClick={() => window.open(p.imageSrc, "_blank")}
+                        title="Agrandir l'image"
+                      >
+                        Ouvrir l’image
+                      </button>
+                    </>
                   ) : (
                     <div className="flex h-full w-full items-center justify-center text-xs text-gray-400">
                       Pas d’image
@@ -118,17 +128,32 @@ export default function Projects({ items, title = "Projets" }: ProjectsProps) {
                   ) : null}
                 </div>
 
+                {/* Séparateur */}
+                <hr className="border-t border-gray-200 w-full" />
                 {/* Body */}
                 <div className="flex flex-col gap-3 p-4 flex-1 relative pt-4">
                   <h3 className="text-base font-semibold text-gray-900">
                     {p.title}
                   </h3>
                   {p.description ? (
-                    <p className="text-sm text-gray-600">{p.description}</p>
+                    <ProjectDescription description={p.description} />
+                  ) : null}
+
+                  {p.technologies && p.technologies.length ? (
+                    <div className="mt-1 mb-2 flex flex-wrap gap-2">
+                      {p.technologies.map((tech: string) => (
+                        <span
+                          key={tech}
+                          className="rounded-md border border-indigo-200 bg-indigo-50 px-2 py-1 text-xs text-indigo-700 font-semibold"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   ) : null}
 
                   {p.tags && p.tags.length ? (
-                    <div className="mt-1 mb-4 flex flex-wrap gap-2">
+                    <div className="mb-4 flex flex-wrap gap-2">
                       {p.tags.map((t: string) => (
                         <span
                           key={t}
@@ -171,5 +196,66 @@ export default function Projects({ items, title = "Projets" }: ProjectsProps) {
         </div>
       </div>
     </section>
+  );
+}
+
+// Affichage description tronquée avec bouton "Voir plus"
+
+function ProjectDescription({ description }: { description: string }) {
+  const [expanded, setExpanded] = useState(false);
+  const maxLength = 130;
+  const isLong = description.length > maxLength;
+  const displayText =
+    !expanded && isLong ? description.slice(0, maxLength) + "..." : description;
+
+  return (
+    <div>
+      <p className="text-sm text-gray-600">{displayText}</p>
+      {isLong && (
+        <div className="mt-2">
+          <button
+            type="button"
+            className="inline-flex items-center gap-1 rounded-full border border-indigo-200 bg-indigo-50 px-2 py-0.5 text-xs font-semibold text-indigo-700 shadow-sm transition hover:bg-indigo-600 hover:text-white hover:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-300"
+            onClick={() => setExpanded((v) => !v)}
+          >
+            {expanded ? (
+              <>
+                Voir moins
+                <svg
+                  className="w-3 h-3 ml-1"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 10L8 6 4 10"
+                  />
+                </svg>
+              </>
+            ) : (
+              <>
+                Voir plus
+                <svg
+                  className="w-3 h-3 ml-1"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4 6l4 4 4-4"
+                  />
+                </svg>
+              </>
+            )}
+          </button>
+        </div>
+      )}
+    </div>
   );
 }
