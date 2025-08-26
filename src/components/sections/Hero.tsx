@@ -5,6 +5,7 @@ import ProfileImage from "../ui/ProfileImage";
 import { MapPin } from "lucide-react";
 import "./HeroWave.css";
 import "./HeroAvailable.css";
+import LearnMore from "../ui/LearnMore";
 
 type SocialLink = {
   href: string;
@@ -114,6 +115,7 @@ export default function Hero({
           <ProfileImage src={avatarSrc} alt={`Photo de ${name}`} />
         </div>
       </div>
+      <LearnMore />
     </section>
   );
 }
