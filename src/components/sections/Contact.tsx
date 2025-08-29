@@ -57,7 +57,7 @@ export default function Contact({
             type="button"
             onClick={copyEmail}
             aria-label={copied ? "Email copié" : "Copier l'email"}
-            className="hover-smooth inline-flex items-center gap-2 rounded-md border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+            className="hover-smooth inline-flex items-center gap-2 rounded-md border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 cursor-pointer"
           >
             {copied ? (
               <Check size={16} className="text-green-500" />
