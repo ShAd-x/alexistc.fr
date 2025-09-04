@@ -1,4 +1,4 @@
-import type { TimelineItem } from "./components/sections/Timeline";
+import type { TimelineItem } from "../components/sections/Timeline";
 
 export const formations: TimelineItem[] = [
   {

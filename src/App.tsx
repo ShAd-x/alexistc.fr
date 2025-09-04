@@ -6,10 +6,10 @@ import Contact from "./components/sections/Contact";
 import Footer from "./components/layout/Footer";
 import Skills from "./components/sections/Skills";
 import { Github, Linkedin, Mail } from "lucide-react";
-import { profile } from "./profile";
-import { projects } from "./projects";
-import { experiences } from "./experiences";
-import { formations } from "./formations";
+import { profile } from "./data/profile";
+import { projects } from "./data/projects";
+import { experiences } from "./data/experiences";
+import { formations } from "./data/formations";
 
 function App() {
   const { name, email } = profile;

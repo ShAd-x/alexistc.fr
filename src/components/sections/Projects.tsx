@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import type { Project } from "../../projects";
+import type { Project } from "../../data/projects";
 import { ExternalLink, Layers, Filter } from "lucide-react";
 import Card from "../ui/Card";
 
