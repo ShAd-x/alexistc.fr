@@ -20,13 +20,14 @@ src/
     layout/            # Navbar, Footer
     sections/          # Sections principales (Hero, Projects, Skills, Timeline, Contact)
     ui/                # UI générique (Button, Card, ProfileImage)
+  data/                # Données structurées (experiences, formations, profile, projects)
+    experiences.ts     # Données des expériences
+    formations.ts      # Données des formations
+    profile.ts         # Données du profil
+    projects.ts        # Données des projets
   App.tsx              # Composant racine
   main.tsx             # Point d’entrée de l’application
   index.css            # Styles globaux
-  experiences.ts       # Données des expériences
-  formations.ts        # Données des formations
-  profile.ts           # Données du profil
-  projects.ts          # Données des projets
 ```
 
 ## 4. Commandes Utiles
@@ -43,7 +44,7 @@ src/
 - Utilisation de Tailwind pour des styles modulaires et maintenables.
 
 ## 6. Vue d’Architecture
-L’application est structurée autour de composants React modulaires. Les données sont séparées dans des fichiers dédiés (`experiences.ts`, `formations.ts`, etc.). Les assets sont organisés pour faciliter la maintenance. Les sections du site sont des composants indépendants, favorisant la réutilisabilité et la clarté.
+L’application est structurée autour de composants React modulaires. Les données sont séparées dans le dossier `src/data/` (`experiences.ts`, `formations.ts`, `profile.ts`, `projects.ts`). Les assets sont organisés pour faciliter la maintenance. Les sections du site sont des composants indépendants, favorisant la réutilisabilité et la clarté.
 
 ## 7. Sécurité
 - Utilisation de TypeScript pour limiter les erreurs.
