@@ -22,7 +22,7 @@ export const profile: Profile = {
   location: "Rouen, France",
   intro:
     "Bonjour et bienvenue sur mon portfolio. J’aime créer des produits utiles, performants et élégants.",
-  avatar: "/img/me.jpeg",
+  avatar: "/src/assets/img/me.jpeg",
   cv: "/cv.pdf",
   socials: [
     { label: "Email", href: "mailto:contact@alexistc.fr", kind: "email" },
