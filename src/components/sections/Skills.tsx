@@ -1,5 +1,7 @@
 import { Package, Code, Layers, Database } from "lucide-react";
 
+import Card from "../ui/Card";
+
 export default function Skills() {
   return (
     <section
@@ -17,7 +19,7 @@ export default function Skills() {
         </div>
 
         <div className="md:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-white rounded-lg shadow p-6 flex flex-col items-center transition-transform duration-200 hover:scale-105 hover:shadow-lg group">
+          <Card className="p-6 flex flex-col items-center transition-transform duration-200 hover:scale-105 hover:shadow-lg">
             <Code
               className="text-indigo-500 mb-2 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
               size={32}
@@ -37,8 +39,8 @@ export default function Skills() {
                 )
               )}
             </div>
-          </div>
-          <div className="bg-white rounded-lg shadow p-6 flex flex-col items-center transition-transform duration-200 hover:scale-105 hover:shadow-lg group">
+          </Card>
+          <Card className="p-6 flex flex-col items-center transition-transform duration-200 hover:scale-105 hover:shadow-lg">
             <Layers
               className="text-green-500 mb-2 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
               size={32}
@@ -58,8 +60,8 @@ export default function Skills() {
                 )
               )}
             </div>
-          </div>
-          <div className="bg-white rounded-lg shadow p-6 flex flex-col items-center transition-transform duration-200 hover:scale-105 hover:shadow-lg group">
+          </Card>
+          <Card className="p-6 flex flex-col items-center transition-transform duration-200 hover:scale-105 hover:shadow-lg">
             <Database
               className="text-yellow-500 mb-2 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
               size={32}
@@ -79,7 +81,7 @@ export default function Skills() {
                 )
               )}
             </div>
-          </div>
+          </Card>
         </div>
       </div>
     </section>
