@@ -1,4 +1,4 @@
-import { FileDown } from "lucide-react";
+import { FileDown, Mail } from "lucide-react";
 import React from "react";
 import Button from "../ui/Button";
 import ProfileImage from "../ui/ProfileImage";
@@ -78,8 +78,17 @@ export default function Hero({
               Disponible pour de nouvelles missions !
             </span>
           </div>
-
           <div className="mt-6 flex flex-wrap items-center gap-3">
+            <Button
+              href="#contact"
+              icon={<Mail size={18} />}
+              aria-label="Discutons de votre projet"
+              title="Discutons de votre projet"
+              variant="primary"
+            >
+              Discutons de votre projet
+            </Button>
+
             <Button
               href={cvHref ?? "#"}
               targetBlank={true}

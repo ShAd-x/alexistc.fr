@@ -1,15 +1,16 @@
-import Navbar from "./components/layout/Navbar";
+import Navbar from "./components/layout/Navbar/Navbar";
 import Hero from "./components/sections/Hero";
 import Timeline from "./components/sections/Timeline";
 import Projects from "./components/sections/Projects";
 import Contact from "./components/sections/Contact";
-import Footer from "./components/layout/Footer";
+import Footer from "./components/layout/Footer/Footer";
 import Skills from "./components/sections/Skills";
 import { Github, Linkedin, Mail } from "lucide-react";
 import { profile } from "./data/profile";
 import { projects } from "./data/projects";
 import { experiences } from "./data/experiences";
 import { formations } from "./data/formations";
+import { navLinks } from "./data/navLinks";
 
 function App() {
   const { name, email } = profile;
@@ -52,7 +53,7 @@ function App() {
 
   return (
     <>
-      <Navbar name={name} />
+      <Navbar name={name} links={navLinks} />
       <main>
         <Hero
           name={name}
@@ -85,7 +86,12 @@ function App() {
         <Projects items={projects} />
         <Contact email={email} />
       </main>
-      <Footer name={name} location={profile.location} links={footerLinks} />
+      <Footer
+        name={name}
+        location={profile.location}
+        links={footerLinks}
+        navLinks={navLinks}
+      />
     </>
   );
 }
