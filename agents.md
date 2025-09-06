@@ -15,7 +15,7 @@ Le projet doit être adapté SEO. Penser à mettre à jour le fichiers agents.md
 ```
 public/                # Fichiers statiques (PDF, images)
 src/
-  assets/              # Ressources (fonts, images)
+  assets/              # Ressources (fonts)
   components/          # Composants réutilisables
     layout/            # Navbar, Footer
     sections/          # Sections principales (Hero, Projects, Skills, Timeline, Contact)
