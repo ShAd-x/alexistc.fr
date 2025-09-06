@@ -95,7 +95,7 @@ export default function Projects({ items, title = "Projets" }: ProjectsProps) {
             filtered.map((p) => (
               <Card
                 key={p.id}
-                className="flex flex-col group border border-gray-200 bg-white/90 backdrop-blur-sm transition-all duration-400 hover:scale-102 hover:shadow-2xl hover:shadow-gray-800/40 hover:border-indigo-300 hover:bg-white"
+                className="flex flex-col group border border-gray-200 bg-white/90 backdrop-blur-sm transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-105 hover:shadow-2xl hover:shadow-gray-800/40 hover:border-indigo-300 hover:bg-white"
               >
                 {/* Image */}
                 <div className="relative aspect-[16/9] overflow-hidden bg-gray-100">
