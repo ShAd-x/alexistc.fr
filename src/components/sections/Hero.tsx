@@ -1,4 +1,4 @@
-import { FileDown, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 import React from "react";
 import Button from "../ui/Button";
 import ProfileImage from "../ui/ProfileImage";
@@ -29,7 +29,6 @@ export default function Hero({
   intro,
   avatarSrc,
   socials,
-  cvHref,
   location,
 }: HeroProps) {
   const [first, ...rest] = name.split(" ");
@@ -44,7 +43,7 @@ export default function Hero({
             <span
               className="inline-block origin-bottom animate-wave text-3xl mr-2 align-middle relative -top-1"
               role="img"
-              aria-label="salut"
+              aria-label="bonjour"
             >
               👋
             </span>
@@ -87,17 +86,6 @@ export default function Hero({
               variant="primary"
             >
               Discutons de votre projet
-            </Button>
-
-            <Button
-              href={cvHref ?? "#"}
-              targetBlank={true}
-              icon={<FileDown size={18} />}
-              aria-label="Télécharger mon CV"
-              title="Télécharger mon CV"
-              variant="primary"
-            >
-              Télécharger mon CV
             </Button>
 
             <div className="flex items-center gap-2">

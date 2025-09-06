@@ -45,7 +45,7 @@ src/
 
 
 ## 6. Vue d’Architecture
-L’application est structurée autour de composants React modulaires. Les données sont séparées dans le dossier `src/data/` (`experiences.ts`, `formations.ts`, `profile.ts`, `projects.ts`). Les assets sont organisés pour faciliter la maintenance. Les sections du site sont des composants indépendants, favorisant la réutilisabilité et la clarté.
+L’application est structurée autour de composants React modulaires. Les données sont séparées dans le dossier `src/data/` (`experiences.ts`, `profile.ts`, `projects.ts`). Les assets sont organisés pour faciliter la maintenance. Les sections du site sont des composants indépendants, favorisant la réutilisabilité et la clarté.
 
 ## 7. SEO & Accessibilité
 

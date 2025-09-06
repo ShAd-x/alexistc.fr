@@ -19,7 +19,7 @@ export const projects: Project[] = [
     technologies: ["Laravel", "PHP", "JavaScript", "Bootstrap"],
     tags: ["Fullstack web", "Association", "Gestion de projet", "Figma"],
     category: "Professionnel",
-    link: "https://github.com/piesente/piesente",
+    link: "https://piesente.fr",
   },
   {
     id: "korusmc",
@@ -57,7 +57,17 @@ export const projects: Project[] = [
     technologies: ["TypeScript", "VSCode API"],
     tags: ["Extension", "Automatisation"],
     category: "Personnel",
-    link: "https://github.com/tonprofil/fasttyping",
+    link: "https://github.com/ShAd-x/FastTyping",
+  },
+  {
+    id: "portfolio",
+    title: "Ce site - Mon portfolio personnel",
+    imageSrc: "/src/assets/img/projects/portfolio.png",
+    description:
+      "Site web personnel, permettant de présenter mes compétences et mes projets. Ce site sert à mon activité professionnelle et est régulièrement mis à jour. Il est développé avec React, TypeScript et Tailwind CSS et est optimisé pour le référencement naturel (SEO).",
+    technologies: ["React", "Tailwind", "TypeScript", "Vite"],
+    tags: ["Responsive", "Portfolio", "Web", "Figma"],
+    category: "Personnel",
   },
   {
     id: "pokemon-ios",
@@ -68,7 +78,7 @@ export const projects: Project[] = [
     technologies: ["Swift", "PokéAPI"],
     tags: ["Clean Architecture", "iOS", "API"],
     category: "Personnel",
-    link: "https://github.com/tonprofil/pokemon-ios",
+    link: "https://github.com/ShAd-x/CleanPoke",
   },
   {
     id: "medicit",
@@ -89,7 +99,7 @@ export const projects: Project[] = [
     technologies: ["Spring", "Java"],
     tags: ["Backend", "Web", "Finance", "Base de données", "Transactions"],
     category: "Académique",
-    link: "https://github.com/tonprofil/app-bancaire",
+    link: "https://github.com/ShAd-x/asi2-systemebancaire",
   },
   {
     id: "gestion-materiel",
@@ -100,7 +110,7 @@ export const projects: Project[] = [
     technologies: ["Angular", "Node.js", "Express", "MongoDB", "Mongoose"],
     tags: ["Fullstack web", "Authentification JWT", "NoSQL"],
     category: "Académique",
-    link: "https://github.com/tonprofil/gestion-materiel",
+    link: "https://github.com/ShAd-x/equipment-management",
   },
   {
     id: "gestion-patients",
@@ -110,6 +120,6 @@ export const projects: Project[] = [
     technologies: [".NET", "Razor"],
     tags: ["Web", "CRUD"],
     category: "Académique",
-    link: "https://github.com/tonprofil/gestion-patients",
+    link: "https://github.com/ShAd-x/projet_asi",
   },
 ];
