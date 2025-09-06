@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import type { Project } from "../../data/projects";
-import { ExternalLink, Layers, Filter } from "lucide-react";
+import { ExternalLink, Layers, Filter, RotateCcw } from "lucide-react";
 import Card from "../ui/Card";
 
 type ProjectsProps = {
@@ -65,9 +65,9 @@ export default function Projects({ items, title = "Projets" }: ProjectsProps) {
                     onClick={() => toggleKind(cat)}
                     aria-pressed={active}
                     className={[
-                      "hover-smooth inline-flex items-center rounded-md border px-2.5 py-1.5 text-sm font-medium",
+                      "hover-smooth inline-flex items-center rounded-md border px-2.5 py-1.5 text-sm font-medium cursor-pointer",
                       active
-                        ? "border-indigo-600 bg-indigo-600 text-white"
+                        ? "border-indigo-600 bg-indigo-600 text-white hover:bg-indigo-500"
                         : "border-gray-200 bg-white text-gray-700 hover:bg-gray-50",
                     ].join(" ")}
                   >
@@ -78,9 +78,9 @@ export default function Projects({ items, title = "Projets" }: ProjectsProps) {
               <button
                 type="button"
                 onClick={reset}
-                className="hover-smooth inline-flex items-center rounded-md border border-gray-200 bg-white px-2.5 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-50"
+                className="hover-smooth inline-flex items-center rounded-md border px-2.5 py-1.5 text-sm font-medium text-white cursor-pointer bg-indigo-600 border-indigo-600 hover:bg-indigo-500"
               >
-                Réinitialiser
+                <RotateCcw size={16} className="mr-1" /> Réinitialiser
               </button>
             </div>
           )}
