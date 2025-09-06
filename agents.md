@@ -43,10 +43,17 @@ src/
 - Respect des conventions TypeScript et React.
 - Utilisation de Tailwind pour des styles modulaires et maintenables.
 
+
 ## 6. Vue d’Architecture
 L’application est structurée autour de composants React modulaires. Les données sont séparées dans le dossier `src/data/` (`experiences.ts`, `formations.ts`, `profile.ts`, `projects.ts`). Les assets sont organisés pour faciliter la maintenance. Les sections du site sont des composants indépendants, favorisant la réutilisabilité et la clarté.
 
-## 7. Sécurité
+## 7. SEO & Accessibilité
+
+- Les balises SEO essentielles (`title`, `description`, `charset`, `viewport`, `lang`, `canonical`, `robots`) sont présentes dans [`index.html`](index.html:1).
+- Les balises Open Graph et Twitter Card sont intégrées pour un partage optimal sur les réseaux sociaux.
+- L’accessibilité est assurée : toutes les images importantes ont un attribut `alt` pertinent, les titres sont structurés, et les boutons/icônes disposent d’`aria-label` ou `title` si nécessaire.
+
+## 8. Sécurité
 - Utilisation de TypeScript pour limiter les erreurs.
 - Respect des bonnes pratiques React.
 - Fichiers statiques servis depuis le dossier public pour éviter les fuites de données sensibles.
