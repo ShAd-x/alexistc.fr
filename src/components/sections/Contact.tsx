@@ -1,6 +1,7 @@
 import { Mail, Copy, Check } from "lucide-react";
 import { useState, useRef } from "react";
 import Button from "../ui/Button";
+import Firework from "../ui/Firework";
 
 type ContactProps = {
   email: string;
@@ -43,7 +44,7 @@ export default function Contact({
           {title}
         </h2>
         <p className="mx-auto mt-2 max-w-xl text-gray-600">{subtitle}</p>
-        <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row relative">
           <Button
             href={mailto}
             icon={<Mail size={18} />}
@@ -57,7 +58,7 @@ export default function Contact({
             type="button"
             onClick={copyEmail}
             aria-label={copied ? "Email copié" : "Copier l'email"}
-            className="hover-smooth inline-flex items-center gap-2 rounded-md border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 cursor-pointer"
+            className="hover-smooth inline-flex items-center gap-2 rounded-md border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 cursor-pointer relative"
           >
             {copied ? (
               <Check size={16} className="text-green-500" />
@@ -65,6 +66,7 @@ export default function Contact({
               <Copy size={16} />
             )}
             <span>{copied ? "Copié !" : "Copier"}</span>
+            {copied && <Firework />}
           </button>
         </div>
         <span className="sr-only" aria-live="polite">
