@@ -1,10 +1,5 @@
-type Link = {
-  href: string;
-  label: string;
-};
-
 type NavbarMobilePanelProps = {
-  links: Link[];
+  links: { href: string; label: string }[];
   close: () => void;
 };
 

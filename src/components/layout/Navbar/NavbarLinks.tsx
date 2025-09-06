@@ -1,10 +1,5 @@
-type Link = {
-  href: string;
-  label: string;
-};
-
 type NavbarLinksProps = {
-  links: Link[];
+  links: { href: string; label: string }[];
 };
 
 export default function NavbarLinks({ links }: NavbarLinksProps) {

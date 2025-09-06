@@ -6,7 +6,7 @@ import NavbarMobilePanel from "./NavbarMobilePanel";
 
 type NavbarProps = {
   name: string;
-  links?: { href: string; label: string }[];
+  links: { href: string; label: string }[];
 };
 
 export default function Navbar({ name, links }: NavbarProps) {
