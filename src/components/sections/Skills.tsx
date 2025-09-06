@@ -17,8 +17,11 @@ export default function Skills() {
         </div>
 
         <div className="md:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-white rounded-lg shadow p-6 flex flex-col items-center transition-transform duration-200 hover:scale-105 hover:shadow-lg">
-            <Code className="text-indigo-500 mb-2" size={32} />
+          <div className="bg-white rounded-lg shadow p-6 flex flex-col items-center transition-transform duration-200 hover:scale-105 hover:shadow-lg group">
+            <Code
+              className="text-indigo-500 mb-2 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
+              size={32}
+            />
             <div className="font-medium text-gray-800 mb-2 text-lg">
               Langages
             </div>
@@ -35,8 +38,11 @@ export default function Skills() {
               )}
             </div>
           </div>
-          <div className="bg-white rounded-lg shadow p-6 flex flex-col items-center transition-transform duration-200 hover:scale-105 hover:shadow-lg">
-            <Layers className="text-green-500 mb-2" size={32} />
+          <div className="bg-white rounded-lg shadow p-6 flex flex-col items-center transition-transform duration-200 hover:scale-105 hover:shadow-lg group">
+            <Layers
+              className="text-green-500 mb-2 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
+              size={32}
+            />
             <div className="font-medium text-gray-800 mb-2 text-lg">
               Frameworks
             </div>
@@ -53,8 +59,11 @@ export default function Skills() {
               )}
             </div>
           </div>
-          <div className="bg-white rounded-lg shadow p-6 flex flex-col items-center transition-transform duration-200 hover:scale-105 hover:shadow-lg">
-            <Database className="text-yellow-500 mb-2" size={32} />
+          <div className="bg-white rounded-lg shadow p-6 flex flex-col items-center transition-transform duration-200 hover:scale-105 hover:shadow-lg group">
+            <Database
+              className="text-yellow-500 mb-2 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
+              size={32}
+            />
             <div className="font-medium text-gray-800 mb-2 text-lg">
               Bases de données
             </div>
