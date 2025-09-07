@@ -17,10 +17,10 @@ export default function ProfileImage({
       }
     >
       <div
-        className="absolute inset-0 z-0 rounded-full bg-indigo-600 blur-xl opacity-100 scale-110"
+        className="absolute inset-0 z-0 rounded-2xl bg-indigo-600 blur-xl opacity-100 scale-110"
         aria-hidden="true"
       />
-      <div className="relative z-10 h-full w-full overflow-hidden rounded-full border-2 border-black shadow-sm">
+      <div className="relative z-10 h-full w-full overflow-hidden rounded-4xl">
         <img
           src={src}
           alt={alt}

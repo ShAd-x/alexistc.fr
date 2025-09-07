@@ -55,7 +55,7 @@ export default function Hero({
           <p className="relative mt-3 text-lg font-medium text-gray-800">
             <span className="relative inline-block">
               <span
-                className="absolute left-0 right-0 top-1/2 -translate-y-1/2 -z-10 bg-indigo-600 opacity-100 rotate-[-2deg] h-[36px] w-full rounded-md blur-sm"
+                className="absolute left-0 right-0 top-1/2 -translate-y-1/2 -z-10 bg-indigo-600 opacity-100 rotate-[-2deg] h-[36px] w-full rounded-md backdrop-blur-none"
                 aria-hidden="true"
               />
               <span className="relative px-2 text-white">{title}</span>
