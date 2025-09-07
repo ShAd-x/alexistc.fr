@@ -74,7 +74,7 @@ export const projects: Project[] = [
     title: "Application iOS Pokémon",
     imageSrc: "/img/projects/cleanpoke.png",
     description:
-      "Application iOS qui consomme l’API PokéAPI, architecture propre (Clean Architecture), gestion réseau et affichage structuré.",
+      "Application iOS qui consomme l’API PokéAPI, Clean Architecture, gestion réseau et affichage structuré.",
     technologies: ["Swift", "PokéAPI"],
     tags: ["Clean Architecture", "iOS", "API"],
     category: "Personnel",
