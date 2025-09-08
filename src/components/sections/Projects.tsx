@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import type { Project } from "../../data/projects";
 import { ExternalLink, Layers, Filter, RotateCcw } from "lucide-react";
 import Card from "../ui/Card";
+import ImageModal from "../ui/ImageModal";
 
 type ProjectsProps = {
   items: Project[];
@@ -20,6 +21,8 @@ export default function Projects({ items, title = "Projets" }: ProjectsProps) {
     [categories]
   );
   const [selected, setSelected] = useState<Set<string>>(initialSelected);
+
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const toggleKind = (k: string) => {
     setSelected((prev) => {
@@ -41,6 +44,15 @@ export default function Projects({ items, title = "Projets" }: ProjectsProps) {
 
   return (
     <section id="projets" className="border-b border-gray-200/60">
+      {/* Modale d'image */}
+      {selectedImage && (
+        <ImageModal
+          src={selectedImage}
+          alt="Aperçu du projet"
+          onClose={() => setSelectedImage(null)}
+        />
+      )}
+
       <div className="mx-auto max-w-6xl px-4 py-12 md:py-16">
         <div className="mb-6 flex flex-col justify-between gap-4 sm:mb-8 sm:flex-row sm:items-center">
           <div className="flex items-center gap-2">
@@ -110,8 +122,9 @@ export default function Projects({ items, title = "Projets" }: ProjectsProps) {
                       <button
                         type="button"
                         className="absolute bottom-2 right-2 z-10 rounded-full bg-white/80 px-2 py-1 text-xs font-semibold text-indigo-700 shadow hover:bg-indigo-600 hover:text-white transition"
-                        onClick={() => window.open(p.imageSrc, "_blank")}
+                        onClick={() => setSelectedImage(p.imageSrc as string)}
                         title="Agrandir l'image"
+                        aria-haspopup="dialog"
                       >
                         Ouvrir l’image
                       </button>
