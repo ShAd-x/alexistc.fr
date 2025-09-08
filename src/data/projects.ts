@@ -16,8 +16,15 @@ export const projects: Project[] = [
     imageSrc: "/img/projects/piesente.webp",
     description:
       "Projet universitaire en équipe de cinq personnes, consistant en la refonte complète du site web d’une association de marche. Nous avons assuré l’ensemble du cycle de production, depuis le recueil des besoins et la rédaction du cahier des charges en collaboration avec le client, jusqu’à la conception de maquettes fonctionnelles et la rédaction de documents techniques. J’ai également participé au développement complet de l’application, front-end et back-end, ainsi qu’à sa mise en production finale.",
-    technologies: ["Laravel", "PHP", "JavaScript", "Bootstrap"],
-    tags: ["Fullstack web", "Association", "Gestion de projet", "Figma"],
+    technologies: [
+      "Laravel",
+      "PHP",
+      "JavaScript",
+      "Bootstrap",
+      "Docker",
+      "Figma",
+    ],
+    tags: ["Fullstack", "Web", "Gestion de projet", "Design", "Association"],
     category: "Professionnel",
     link: "https://piesente.fr",
   },
@@ -30,11 +37,11 @@ export const projects: Project[] = [
     technologies: ["Java", "Kotlin", "MariaDB"],
     tags: [
       "Backend",
+      "Jeu vidéo",
       "Base de données",
-      "Gestion d'équipe",
+      "Gestion de projet",
+      "Équipe",
       "Agile",
-      "Serveur",
-      "Minecraft",
     ],
     category: "Professionnel",
   },
@@ -45,7 +52,7 @@ export const projects: Project[] = [
     description:
       "Participation comme développeur dans une équipe, développement de plusieurs fonctionnalités pour un serveur Minecraft.",
     technologies: ["Java", "MySQL"],
-    tags: ["Backend", "Travail en équipe"],
+    tags: ["Backend", "Jeu vidéo", "Équipe"],
     category: "Professionnel",
   },
   {
@@ -55,7 +62,7 @@ export const projects: Project[] = [
     description:
       "Développement d’une extension Visual Studio Code pour automatiser des raccourcis d’écriture (ex: -- devient →).",
     technologies: ["TypeScript", "VSCode API"],
-    tags: ["Extension", "Automatisation"],
+    tags: ["Extension", "Automatisation", "Open Source"],
     category: "Personnel",
     link: "https://github.com/ShAd-x/FastTyping",
   },
@@ -66,7 +73,7 @@ export const projects: Project[] = [
     description:
       "Site web personnel, permettant de présenter mes compétences et mes projets. Ce site sert à mon activité professionnelle et est régulièrement mis à jour. Il est développé avec React, TypeScript et Tailwind CSS et est optimisé pour le référencement naturel (SEO).",
     technologies: ["React", "Tailwind", "TypeScript", "Vite"],
-    tags: ["Responsive", "Portfolio", "Web", "Figma"],
+    tags: ["Frontend", "Web", "Portfolio", "Design", "SEO"],
     category: "Personnel",
   },
   {
@@ -76,7 +83,7 @@ export const projects: Project[] = [
     description:
       "Application iOS qui consomme l’API PokéAPI, Clean Architecture, gestion réseau et affichage structuré.",
     technologies: ["Swift", "PokéAPI"],
-    tags: ["Clean Architecture", "iOS", "API"],
+    tags: ["Mobile", "iOS", "API", "Clean Architecture"],
     category: "Personnel",
     link: "https://github.com/ShAd-x/CleanPoke",
   },
@@ -86,8 +93,15 @@ export const projects: Project[] = [
     imageSrc: "/img/projects/medicit.webp",
     description:
       "Application de gestion d’un cabinet médical (comptes patients/médecins, validation, ordonnances).",
-    technologies: ["Laravel", "PHP", "JavaScript", "Bootstrap"],
-    tags: ["Fullstack web", "Santé"],
+    technologies: [
+      "Laravel",
+      "PHP",
+      "JavaScript",
+      "Bootstrap",
+      "Docker",
+      "Figma",
+    ],
+    tags: ["Fullstack", "Web", "Gestion de projet", "Design", "Santé"],
     category: "Académique",
   },
   {
@@ -97,7 +111,7 @@ export const projects: Project[] = [
     description:
       "Développement d’une appli bancaire avec gestion de comptes, dépôts/retraits, transactions, base de données relationnelle.",
     technologies: ["Spring", "Java"],
-    tags: ["Backend", "Web", "Finance", "Base de données", "Transactions"],
+    tags: ["Backend", "Web", "Finance", "Base de données"],
     category: "Académique",
     link: "https://github.com/ShAd-x/asi2-systemebancaire",
   },
@@ -108,7 +122,7 @@ export const projects: Project[] = [
     description:
       "Développement fullstack avec Angular (frontend) + Node.js/Express (backend) + MongoDB. Gestion d’équipements.",
     technologies: ["Angular", "Node.js", "Express", "MongoDB", "Mongoose"],
-    tags: ["Fullstack web", "Authentification JWT", "NoSQL"],
+    tags: ["Fullstack", "Web", "NoSQL", "Authentification"],
     category: "Académique",
     link: "https://github.com/ShAd-x/equipment-management",
   },
