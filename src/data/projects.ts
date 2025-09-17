@@ -75,6 +75,7 @@ export const projects: Project[] = [
     technologies: ["React", "Tailwind", "TypeScript", "Vite"],
     tags: ["Frontend", "Web", "Portfolio", "Design", "SEO"],
     category: "Personnel",
+    link: "https://github.com/ShAd-x/alexistc.fr",
   },
   {
     id: "pokemon-ios",
