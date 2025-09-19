@@ -28,7 +28,7 @@ export default function ProjectDescription({
         <div className="mt-2">
           <button
             type="button"
-            className="cursor-pointer inline-flex items-center gap-1 rounded-full border border-indigo-200 bg-indigo-50 px-2 py-0.5 text-xs font-semibold text-indigo-700 shadow-sm transition hover:bg-indigo-600 hover:text-white hover:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-300"
+            className="cursor-pointer inline-flex items-center gap-1 rounded-full border border-blue-200 bg-blue-50 px-2 py-0.5 text-xs font-semibold text-blue-700 shadow-sm transition hover:bg-blue-600 hover:text-white hover:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-300"
             onClick={(e) => {
               e.stopPropagation();
               setExpanded((v) => !v);

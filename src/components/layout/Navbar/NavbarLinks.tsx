@@ -9,7 +9,7 @@ export default function NavbarLinks({ links }: NavbarLinksProps) {
         <a
           key={l.href}
           href={l.href}
-          className="hover-smooth text-sm font-medium text-gray-700 hover:text-indigo-600"
+          className="hover-smooth text-sm font-medium text-gray-700 hover:text-blue-600"
         >
           {l.label}
         </a>

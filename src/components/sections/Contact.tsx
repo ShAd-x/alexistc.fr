@@ -37,7 +37,7 @@ export default function Contact({
   return (
     <section id="contact" className="border-b border-gray-200/60">
       <div className="mx-auto max-w-6xl px-4 py-16 text-center md:py-24">
-        <div className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-full bg-indigo-600 text-white">
+        <div className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-white">
           <Mail size={20} />
         </div>
         <h2 className="mt-6 text-2xl font-bold tracking-tight sm:text-3xl">

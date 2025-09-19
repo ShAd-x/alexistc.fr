@@ -13,7 +13,7 @@ export default function ProjectTechnologies({
       {technologies.map((tech) => (
         <span
           key={tech}
-          className="rounded-md border border-indigo-200 bg-indigo-50 px-2 py-1 text-xs text-indigo-700 font-semibold"
+          className="rounded-md border border-blue-200 bg-blue-50 px-2 py-1 text-xs text-blue-700 font-semibold"
         >
           {tech}
         </span>

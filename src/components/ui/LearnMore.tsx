@@ -27,13 +27,22 @@ export default function LearnMore({
     >
       <span className="learn-more-blink">En savoir plus</span>
       <span className="learn-more-arrows-row">
-        <span className="learn-more-arrows" style={{ animationDelay: "0ms" }}>
+        <span
+          className="learn-more-arrows text-blue-600"
+          style={{ animationDelay: "0ms" }}
+        >
           ↓
         </span>
-        <span className="learn-more-arrows" style={{ animationDelay: "180ms" }}>
+        <span
+          className="learn-more-arrows text-blue-600"
+          style={{ animationDelay: "180ms" }}
+        >
           ↓
         </span>
-        <span className="learn-more-arrows" style={{ animationDelay: "360ms" }}>
+        <span
+          className="learn-more-arrows text-blue-600"
+          style={{ animationDelay: "360ms" }}
+        >
           ↓
         </span>
       </span>

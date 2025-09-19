@@ -38,7 +38,7 @@ export default function Hero({
     <section id="accueil" className="border-b border-gray-200/60">
       <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-4 py-12 md:grid-cols-2 md:py-20">
         <div>
-          <p className="text-sm font-medium text-indigo-600">Portfolio</p>
+          <p className="text-sm font-medium text-blue-600">Portfolio</p>
           <h1 className="relative mt-3 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
             <span
               className="inline-block origin-bottom animate-wave text-3xl mr-2 align-middle relative -top-1"
@@ -48,14 +48,14 @@ export default function Hero({
               👋
             </span>
             Bonjour, je suis{" "}
-            <span className="text-indigo-600">
+            <span className="text-blue-600">
               {first} {last}
             </span>
           </h1>
           <p className="relative mt-3 text-lg font-medium text-gray-800">
             <span className="relative inline-block">
               <span
-                className="absolute left-0 right-0 top-1/2 -translate-y-1/2 -z-10 bg-indigo-600 opacity-100 rotate-[-2deg] h-[36px] w-full rounded-md backdrop-blur-none"
+                className="absolute left-0 right-0 top-1/2 -translate-y-1/2 -z-10 bg-blue-600 opacity-100 rotate-[-2deg] h-[36px] w-full rounded-md backdrop-blur-none"
                 aria-hidden="true"
               />
               <span className="relative px-2 text-white">{title}</span>
@@ -67,7 +67,7 @@ export default function Hero({
             {location}
           </div>
           <div className="mt-4 flex items-center gap-4">
-            <span className="flex items-center text-indigo-600 font-semibold">
+            <span className="flex items-center text-blue-600 font-semibold">
               <span
                 className="animate-blink mr-1 mb-1 text-2xl leading-none"
                 style={{ fontSize: "1.5em" }}

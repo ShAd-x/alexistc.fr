@@ -28,7 +28,7 @@ export default function Timeline({
     <section id={sectionId} className="border-b border-gray-200/60">
       <div className="mx-auto max-w-6xl px-4 py-12 md:py-16">
         <div className="mb-8 flex items-center gap-2">
-          <div className="inline-flex h-9 w-9 items-center justify-center rounded-md bg-indigo-600 text-white text-lg">
+          <div className="inline-flex h-9 w-9 items-center justify-center rounded-md bg-blue-600 text-white text-lg">
             {icon ? icon : <Briefcase size={18} />}
           </div>
           <h2 className="text-2xl font-bold tracking-tight">{title}</h2>
@@ -38,7 +38,7 @@ export default function Timeline({
           {items.map((it) => (
             <li key={it.id} className="mb-10 ms-6">
               {/* Dot */}
-              <span className="absolute -start-1.5 mt-2 flex h-3 w-3 items-center justify-center rounded-full border border-white bg-indigo-600 ring-2 ring-indigo-200" />
+              <span className="absolute -start-1.5 mt-2 flex h-3 w-3 items-center justify-center rounded-full border border-white bg-blue-600 ring-2 ring-blue-200" />
 
               {/* Content */}
               <div className="grid gap-1 sm:grid-cols-[1fr_auto] sm:items-baseline">
@@ -81,7 +81,7 @@ export default function Timeline({
                     href={it.link}
                     target="_blank"
                     rel="noreferrer"
-                    className="hover-smooth inline-flex items-center gap-1 text-sm font-medium text-indigo-600 hover:text-indigo-500"
+                    className="hover-smooth inline-flex items-center gap-1 text-sm font-medium text-blue-600 hover:text-blue-500"
                   >
                     En savoir plus
                     <svg

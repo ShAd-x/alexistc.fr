@@ -11,7 +11,7 @@ export default function ProjectLink({ link }: ProjectLinkProps) {
         href={link}
         target="_blank"
         rel="noreferrer"
-        className="hover-smooth inline-flex items-center gap-1 text-sm font-medium text-indigo-600 hover:text-indigo-500"
+        className="hover-smooth inline-flex items-center gap-1 text-sm font-medium text-blue-600 hover:text-blue-500"
         onClick={(e) => e.stopPropagation()}
       >
         Voir le projet

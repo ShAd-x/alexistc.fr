@@ -70,7 +70,7 @@ export default function Projects({ items, title = "Projets" }: ProjectsProps) {
       <div className="mx-auto max-w-6xl px-4 py-12 md:py-16">
         <div className="mb-6 flex flex-col justify-between gap-4 sm:mb-8 sm:flex-row sm:items-center">
           <div className="flex items-center gap-2">
-            <div className="inline-flex h-9 w-9 items-center justify-center rounded-md bg-indigo-600 text-white">
+            <div className="inline-flex h-9 w-9 items-center justify-center rounded-md bg-blue-600 text-white">
               <Layers size={18} />
             </div>
             <h2 className="text-2xl font-bold tracking-tight">{title}</h2>
@@ -104,7 +104,7 @@ export default function Projects({ items, title = "Projets" }: ProjectsProps) {
                     className={[
                       "hover-smooth inline-flex items-center rounded-md border px-2.5 py-1.5 text-sm font-medium cursor-pointer",
                       active
-                        ? "border-indigo-600 bg-indigo-600 text-white hover:bg-indigo-500"
+                        ? "border-blue-600 bg-blue-600 text-white hover:bg-blue-700 hover:border-blue-700"
                         : "border-gray-200 bg-white text-gray-700 hover:bg-gray-50",
                     ].join(" ")}
                   >
@@ -115,7 +115,7 @@ export default function Projects({ items, title = "Projets" }: ProjectsProps) {
               <button
                 type="button"
                 onClick={reset}
-                className="hover-smooth inline-flex items-center rounded-md border px-2.5 py-1.5 text-sm font-medium text-white cursor-pointer bg-indigo-600 border-indigo-600 hover:bg-indigo-500"
+                className="hover-smooth inline-flex items-center rounded-md border px-2.5 py-1.5 text-sm font-medium text-white cursor-pointer bg-blue-600 border-blue-600 hover:bg-blue-700 hover:border-blue-700"
               >
                 <RotateCcw size={16} className="mr-1" /> Réinitialiser
               </button>
@@ -132,7 +132,7 @@ export default function Projects({ items, title = "Projets" }: ProjectsProps) {
             filtered.map((p) => (
               <Card
                 key={p.id}
-                className="flex flex-col group border border-gray-200 bg-white/90 backdrop-blur-sm transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-105 hover:shadow-2xl hover:shadow-gray-800/40 hover:border-indigo-300 hover:bg-white cursor-pointer"
+                className="flex flex-col group border border-gray-200 bg-white/90 backdrop-blur-sm transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-105 hover:shadow-2xl hover:shadow-gray-800/40 hover:border-blue-300 hover:bg-white cursor-pointer"
                 onClick={() => setSelectedProject(p)}
               >
                 {/* Image */}
@@ -147,7 +147,7 @@ export default function Projects({ items, title = "Projets" }: ProjectsProps) {
                       />
                       <button
                         type="button"
-                        className="cursor-pointer absolute bottom-2 right-2 z-10 rounded-full bg-white/80 px-2 py-1 text-xs font-semibold text-indigo-700 shadow hover:bg-indigo-600 hover:text-white transition"
+                        className="cursor-pointer absolute bottom-2 right-2 z-10 rounded-full bg-white/80 px-2 py-1 text-xs font-semibold text-blue-700 shadow hover:bg-blue-600 hover:text-white transition"
                         onClick={(e) => {
                           e.stopPropagation();
                           setSelectedImage(p.imageSrc as string);
