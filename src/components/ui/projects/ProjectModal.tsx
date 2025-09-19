@@ -4,6 +4,7 @@ import ProjectDescription from "./ProjectDescription";
 import ProjectLink from "./ProjectLink";
 import ProjectTags from "./ProjectTags";
 import ProjectTechnologies from "./ProjectTechnologies";
+import ProjectCategory from "./ProjectCategory";
 
 type ProjectModalProps = {
   project: Project;
@@ -63,9 +64,10 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             className="rounded-lg shadow mb-4 w-full max-h-60 object-cover"
           />
         )}
-        <h2 className="text-xl font-bold text-gray-900 mb-2">
-          {project.title}
-        </h2>
+        <div className="mb-2 flex items-center gap-2">
+          <ProjectCategory category={project.category} />
+          <h2 className="text-xl font-bold text-gray-900">{project.title}</h2>
+        </div>
         <div className="mb-3">
           <ProjectDescription
             description={project.description}

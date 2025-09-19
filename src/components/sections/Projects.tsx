@@ -8,6 +8,7 @@ import ProjectTechnologies from "../ui/projects/ProjectTechnologies";
 import ProjectModal from "../ui/projects/ProjectModal";
 import ProjectLink from "../ui/projects/ProjectLink";
 import ProjectDescription from "../ui/projects/ProjectDescription";
+import ProjectCategory from "../ui/projects/ProjectCategory";
 
 type ProjectsProps = {
   items: Project[];
@@ -150,11 +151,9 @@ export default function Projects({ items, title = "Projets" }: ProjectsProps) {
                       Pas d’image
                     </div>
                   )}
-                  {p.category ? (
-                    <span className="pointer-events-none absolute left-3 top-3 rounded-md bg-white/90 px-2 py-0.5 text-xs font-medium text-gray-700 shadow-sm backdrop-blur">
-                      {p.category}
-                    </span>
-                  ) : null}
+                  <div className="pointer-events-none absolute left-3 top-3">
+                    <ProjectCategory category={p.category} />
+                  </div>
                 </div>
 
                 {/* Séparateur */}
