@@ -9,7 +9,7 @@ export default function FooterNavLinks({ links }: FooterNavLinksProps) {
         <a
           key={l.href}
           href={l.href}
-          className="hover-smooth hover:text-indigo-600"
+          className="hover-smooth hover:text-blue-600"
         >
           {l.label}
         </a>

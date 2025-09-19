@@ -28,13 +28,12 @@ export default function Button({
 
   if (variant === "primary") {
     variantClass =
-      "bg-indigo-600 text-white border border-indigo-600 hover:bg-indigo-500 hover:text-white px-5 h-9";
+      "bg-blue-600 text-white border border-blue-600 hover:bg-blue-500 hover:text-white px-5 h-9";
   } else if (variant === "icon") {
     variantClass =
       "h-9 w-9 justify-center rounded-md border border-gray-200 bg-white text-gray-700 hover:bg-gray-50 p-0";
   } else if (variant === "footer") {
-    variantClass =
-      "bg-transparent text-gray-600 hover:text-indigo-600 px-2 py-1";
+    variantClass = "bg-transparent text-gray-600 hover:text-blue-600 px-2 py-1";
   } else {
     // secondary
     variantClass =

@@ -5,7 +5,7 @@ import { expertiseText, expertiseSteps } from "../../data/expertise";
 
 const iconMap = {
   lightbulb: <Lightbulb className="text-yellow-500" size={28} />,
-  layers: <Layers className="text-indigo-500" size={28} />,
+  layers: <Layers className="text-blue-500" size={28} />,
   rocket: <Rocket className="text-green-500" size={28} />,
   users: <Users className="text-pink-500" size={28} />,
 };
@@ -16,7 +16,7 @@ const Expertise = () => (
     className="py-16 bg-gradient-to-b from-white to-gray-50 border-b border-gray-200/60"
   >
     <div className="container mx-auto px-4 max-w-4xl">
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-indigo-700 drop-shadow">
+      <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-blue-700 drop-shadow">
         Mon approche pour votre réussite
       </h2>
       <p className="mb-10 text-lg text-center text-gray-700 max-w-2xl mx-auto">
@@ -26,7 +26,7 @@ const Expertise = () => (
         {expertiseSteps.map((step, i) => (
           <Card
             key={step.title}
-            className="flex flex-col items-center p-8 h-full shadow-lg hover:shadow-indigo-200 transition-transform duration-300 hover:-translate-y-2 hover:scale-105 group"
+            className="flex flex-col items-center p-8 h-full shadow-lg hover:shadow-blue-200 transition-transform duration-300 hover:-translate-y-2 hover:scale-105 group"
           >
             <div
               className="mb-3 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300"

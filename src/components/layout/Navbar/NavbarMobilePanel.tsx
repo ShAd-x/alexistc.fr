@@ -16,7 +16,7 @@ export default function NavbarMobilePanel({
               key={l.href}
               href={l.href}
               onClick={close}
-              className="hover-smooth rounded px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-indigo-600"
+              className="hover-smooth rounded px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-blue-600"
             >
               {l.label}
             </a>

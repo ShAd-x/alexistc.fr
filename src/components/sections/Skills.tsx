@@ -11,7 +11,7 @@ export default function Skills() {
       <div className="mx-auto max-w-6xl px-4 py-12 md:py-16">
         <div className="mb-8 flex items-center gap-2">
           <div className="flex items-center gap-2">
-            <div className="inline-flex h-9 w-9 items-center justify-center rounded-md bg-indigo-600 text-white">
+            <div className="inline-flex h-9 w-9 items-center justify-center rounded-md bg-blue-600 text-white">
               <Package size={18} />
             </div>
             <h2 className="text-2xl font-bold tracking-tight">Compétences</h2>

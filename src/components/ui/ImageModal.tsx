@@ -35,7 +35,7 @@ export default function ImageModal({
       >
         <button
           ref={closeBtnRef}
-          className="absolute top-2 right-2 z-10 rounded-full bg-white/90 p-2 hover:bg-indigo-600 hover:text-white text-indigo-700 transition cursor-pointer"
+          className="absolute top-2 right-2 z-10 rounded-full bg-white/90 p-2 hover:bg-blue-600 hover:text-white text-blue-700 transition cursor-pointer"
           onClick={onClose}
           aria-label="Fermer l’aperçu"
           title="Fermer l’aperçu"
