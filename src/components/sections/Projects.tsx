@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import type { Project } from "../../data/projects";
-import { Layers, Filter, RotateCcw } from "lucide-react";
+import { Layers, Filter, RotateCcw, Github } from "lucide-react";
 import Card from "../ui/Card";
 import ImageModal from "../ui/projects/ImageModal";
 import ProjectTags from "../ui/projects/ProjectTags";
@@ -9,6 +9,7 @@ import ProjectModal from "../ui/projects/ProjectModal";
 import ProjectLink from "../ui/projects/ProjectLink";
 import ProjectDescription from "../ui/projects/ProjectDescription";
 import ProjectCategory from "../ui/projects/ProjectCategory";
+import Button from "../ui/Button";
 
 type ProjectsProps = {
   items: Project[];
@@ -73,6 +74,17 @@ export default function Projects({ items, title = "Projets" }: ProjectsProps) {
               <Layers size={18} />
             </div>
             <h2 className="text-2xl font-bold tracking-tight">{title}</h2>
+            <Button
+              href="https://github.com/shad-x"
+              icon={<Github size={18} />}
+              aria-label="Voir mon GitHub"
+              title="Voir mon GitHub"
+              targetBlank={true}
+              variant="primary"
+              className="ml-4 hidden sm:inline-flex"
+            >
+              Voir mon GitHub
+            </Button>
           </div>
 
           {/* Filtres cumulables */}

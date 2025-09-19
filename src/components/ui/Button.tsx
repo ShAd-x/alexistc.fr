@@ -23,12 +23,12 @@ export default function Button({
   ...props
 }: ButtonProps) {
   const base =
-    "hover-smooth inline-flex items-center gap-2 rounded-md text-sm font-medium focus:outline-none transition";
+    "inline-flex items-center gap-2 rounded-md text-sm font-medium focus:outline-none transition-transform duration-175 ease-in-out";
   let variantClass = "";
 
   if (variant === "primary") {
     variantClass =
-      "bg-indigo-600 text-white border border-indigo-600 hover:bg-indigo-500 hover:text-white px-5 h-9";
+      "bg-indigo-600 text-white border border-indigo-600 hover:bg-indigo-500 hover:text-white px-5 h-9 hover:scale-105";
   } else if (variant === "icon") {
     variantClass =
       "h-9 w-9 justify-center rounded-md border border-gray-200 bg-white text-gray-700 hover:bg-gray-50 p-0";

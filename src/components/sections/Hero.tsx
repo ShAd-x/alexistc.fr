@@ -1,4 +1,4 @@
-import { Mail } from "lucide-react";
+import { Github, Mail } from "lucide-react";
 import React from "react";
 import Button from "../ui/Button";
 import ProfileImage from "../ui/ProfileImage";
@@ -88,21 +88,34 @@ export default function Hero({
               Discutons de votre projet
             </Button>
 
+            <Button
+              href="https://github.com/shad-x"
+              icon={<Github size={18} />}
+              aria-label="Voir mon GitHub"
+              title="Voir mon GitHub"
+              targetBlank={true}
+              variant="primary"
+            >
+              Voir mon GitHub
+            </Button>
+
             <div className="flex items-center gap-2">
-              {socials!.map((l) => (
-                <Button
-                  key={l.href}
-                  href={l.href}
-                  icon={l.icon}
-                  aria-label={l.label}
-                  title={l.label}
-                  className="h-9 w-9 justify-center rounded-md border border-gray-200 bg-white text-gray-700 hover:bg-gray-50 p-0"
-                  targetBlank={l.href.startsWith("http")}
-                  variant="icon"
-                >
-                  {null}
-                </Button>
-              ))}
+              {socials!
+                .filter((l) => !l.label.toLowerCase().includes("github"))
+                .map((l) => (
+                  <Button
+                    key={l.href}
+                    href={l.href}
+                    icon={l.icon}
+                    aria-label={l.label}
+                    title={l.label}
+                    className="h-9 w-9 justify-center rounded-md border border-gray-200 bg-white text-gray-700 hover:bg-gray-50 p-0"
+                    targetBlank={l.href.startsWith("http")}
+                    variant="icon"
+                  >
+                    {null}
+                  </Button>
+                ))}
             </div>
           </div>
         </div>
