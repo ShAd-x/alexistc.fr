@@ -135,7 +135,7 @@ export default function Projects({ items, title = "Projets" }: ProjectsProps) {
                       />
                       <button
                         type="button"
-                        className="absolute bottom-2 right-2 z-10 rounded-full bg-white/80 px-2 py-1 text-xs font-semibold text-indigo-700 shadow hover:bg-indigo-600 hover:text-white transition"
+                        className="cursor-pointer absolute bottom-2 right-2 z-10 rounded-full bg-white/80 px-2 py-1 text-xs font-semibold text-indigo-700 shadow hover:bg-indigo-600 hover:text-white transition"
                         onClick={(e) => {
                           e.stopPropagation();
                           setSelectedImage(p.imageSrc as string);
