@@ -1,8 +1,13 @@
 import { useMemo, useState } from "react";
 import type { Project } from "../../data/projects";
-import { ExternalLink, Layers, Filter, RotateCcw } from "lucide-react";
+import { Layers, Filter, RotateCcw } from "lucide-react";
 import Card from "../ui/Card";
-import ImageModal from "../ui/ImageModal";
+import ImageModal from "../ui/projects/ImageModal";
+import ProjectTags from "../ui/projects/ProjectTags";
+import ProjectTechnologies from "../ui/projects/ProjectTechnologies";
+import ProjectModal from "../ui/projects/ProjectModal";
+import ProjectLink from "../ui/projects/ProjectLink";
+import ProjectDescription from "../ui/projects/ProjectDescription";
 
 type ProjectsProps = {
   items: Project[];
@@ -23,6 +28,7 @@ export default function Projects({ items, title = "Projets" }: ProjectsProps) {
   const [selected, setSelected] = useState<Set<string>>(initialSelected);
 
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const toggleKind = (k: string) => {
     setSelected((prev) => {
@@ -50,6 +56,12 @@ export default function Projects({ items, title = "Projets" }: ProjectsProps) {
           src={selectedImage}
           alt="Aperçu du projet"
           onClose={() => setSelectedImage(null)}
+        />
+      )}
+      {selectedProject && (
+        <ProjectModal
+          project={selectedProject}
+          onClose={() => setSelectedProject(null)}
         />
       )}
 
@@ -107,7 +119,8 @@ export default function Projects({ items, title = "Projets" }: ProjectsProps) {
             filtered.map((p) => (
               <Card
                 key={p.id}
-                className="flex flex-col group border border-gray-200 bg-white/90 backdrop-blur-sm transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-105 hover:shadow-2xl hover:shadow-gray-800/40 hover:border-indigo-300 hover:bg-white"
+                className="flex flex-col group border border-gray-200 bg-white/90 backdrop-blur-sm transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-105 hover:shadow-2xl hover:shadow-gray-800/40 hover:border-indigo-300 hover:bg-white cursor-pointer"
+                onClick={() => setSelectedProject(p)}
               >
                 {/* Image */}
                 <div className="relative aspect-[16/9] overflow-hidden bg-gray-100">
@@ -122,7 +135,10 @@ export default function Projects({ items, title = "Projets" }: ProjectsProps) {
                       <button
                         type="button"
                         className="absolute bottom-2 right-2 z-10 rounded-full bg-white/80 px-2 py-1 text-xs font-semibold text-indigo-700 shadow hover:bg-indigo-600 hover:text-white transition"
-                        onClick={() => setSelectedImage(p.imageSrc as string)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setSelectedImage(p.imageSrc as string);
+                        }}
                         title="Agrandir l'image"
                         aria-haspopup="dialog"
                       >
@@ -152,54 +168,16 @@ export default function Projects({ items, title = "Projets" }: ProjectsProps) {
                     <ProjectDescription description={p.description} />
                   ) : null}
 
-                  {p.technologies && p.technologies.length ? (
-                    <div className="mt-1 mb-2 flex flex-wrap gap-2">
-                      {p.technologies.map((tech: string) => (
-                        <span
-                          key={tech}
-                          className="rounded-md border border-indigo-200 bg-indigo-50 px-2 py-1 text-xs text-indigo-700 font-semibold"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  ) : null}
+                  <ProjectTechnologies
+                    technologies={p.technologies}
+                    className="mt-1 mb-2"
+                  />
 
-                  {p.tags && p.tags.length ? (
-                    <div className="mb-4 flex flex-wrap gap-2">
-                      {p.tags.map((t: string) => (
-                        <span
-                          key={t}
-                          className="rounded-md border border-gray-200 bg-white px-2 py-1 text-xs text-gray-700"
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  ) : null}
+                  <ProjectTags tags={p.tags} className="mb-4" />
 
                   <div className="mt-2 flex items-center justify-between">
-                    <div className="text-xs text-gray-500" />
                     <div className="absolute bottom-4 right-4 flex justify-end">
-                      {p.link ? (
-                        <a
-                          href={p.link}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="hover-smooth inline-flex items-center gap-1 text-sm font-medium text-indigo-600 hover:text-indigo-500 mt-4"
-                        >
-                          Voir le projet
-                          <ExternalLink size={16} />
-                        </a>
-                      ) : (
-                        <button
-                          className="inline-flex items-center gap-1 text-sm font-medium text-gray-400 cursor-not-allowed mt-4"
-                          disabled
-                        >
-                          Pas de lien vers ce projet
-                          <ExternalLink size={16} />
-                        </button>
-                      )}
+                      <ProjectLink link={p.link} />
                     </div>
                   </div>
                 </div>
@@ -209,66 +187,5 @@ export default function Projects({ items, title = "Projets" }: ProjectsProps) {
         </div>
       </div>
     </section>
-  );
-}
-
-// Affichage description tronquée avec bouton "Voir plus"
-
-function ProjectDescription({ description }: { description: string }) {
-  const [expanded, setExpanded] = useState(false);
-  const maxLength = 130;
-  const isLong = description.length > maxLength;
-  const displayText =
-    !expanded && isLong ? description.slice(0, maxLength) + "..." : description;
-
-  return (
-    <div>
-      <p className="text-sm text-gray-600">{displayText}</p>
-      {isLong && (
-        <div className="mt-2">
-          <button
-            type="button"
-            className="inline-flex items-center gap-1 rounded-full border border-indigo-200 bg-indigo-50 px-2 py-0.5 text-xs font-semibold text-indigo-700 shadow-sm transition hover:bg-indigo-600 hover:text-white hover:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-300"
-            onClick={() => setExpanded((v) => !v)}
-          >
-            {expanded ? (
-              <>
-                Voir moins
-                <svg
-                  className="w-3 h-3 ml-1"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 10L8 6 4 10"
-                  />
-                </svg>
-              </>
-            ) : (
-              <>
-                Voir plus
-                <svg
-                  className="w-3 h-3 ml-1"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M4 6l4 4 4-4"
-                  />
-                </svg>
-              </>
-            )}
-          </button>
-        </div>
-      )}
-    </div>
   );
 }
