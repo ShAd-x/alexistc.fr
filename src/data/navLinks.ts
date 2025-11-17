@@ -1,5 +1,4 @@
 export const navLinks = [
-  { href: "#mon-approche", label: "Mon approche" },
   {
     href: "#experiences-professionnelles",
     label: "Expériences professionnelles",

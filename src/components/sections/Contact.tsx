@@ -11,8 +11,8 @@ type ContactProps = {
 
 export default function Contact({
   email,
-  title = "Une idée, un projet ?",
-  subtitle = "Discutons ensemble. Je réponds rapidement.",
+  title = "Restons en contact",
+  subtitle = "N'hésitez pas à me contacter. Je réponds rapidement.",
 }: ContactProps) {
   const mailto = `mailto:${email}`;
   const [copied, setCopied] = useState(false);

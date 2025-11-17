@@ -74,18 +74,18 @@ export default function Hero({
               >
                 •
               </span>
-              Disponible pour de nouvelles missions !
+              Ouvert à de nouvelles opportunités !
             </span>
           </div>
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <Button
               href="#contact"
               icon={<Mail size={18} />}
-              aria-label="Discutons de votre projet"
-              title="Discutons de votre projet"
+              aria-label="Me contacter"
+              title="Me contacter"
               variant="primary"
             >
-              Discutons de votre projet
+              Me contacter
             </Button>
 
             <Button

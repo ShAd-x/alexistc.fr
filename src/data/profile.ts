@@ -21,7 +21,7 @@ export const profile: Profile = {
   email: "contact@alexistc.fr",
   location: "Rouen, France",
   intro:
-    "Avec plus de 3 ans d’expérience en développement web, j’accompagne les entreprises dans la création de produits utiles, performants et élégants.",
+    "Avec plus de 3 ans d'expérience en développement web, je conçois et développe des produits utiles, performants et élégants.",
   avatar: "/img/me.jpeg",
   cv: "/cv.pdf",
   socials: [
