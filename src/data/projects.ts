@@ -137,4 +137,26 @@ export const projects: Project[] = [
     category: "Académique",
     link: "https://github.com/ShAd-x/projet_asi",
   },
+  {
+    id: "bloctime",
+    title: "BlocTime – Application de gestion du temps",
+    imageSrc: "/img/projects/bloctime.png",
+    description:
+      "BlocTime est une application mobile simple pour suivre son temps quotidien de manière visuelle. Chaque journée est découpée en blocs de 30 minutes, auxquels tu peux assigner une catégorie (Travail, Sommeil, Loisirs, etc.). Le but est de prendre conscience de son emploi du temps, identifier les habitudes et mieux gérer son temps.",
+    technologies: ["Swift"],
+    tags: ["Mobile", "MVVM", "Gestion du temps", "Productivité"],
+    category: "Personnel",
+    link: "https://github.com/ShAd-x/Bloctime",
+  },
+  {
+    id: "luma",
+    title: "Luma – Application pour créateurs de contenu",
+    imageSrc: "/img/projects/luma.png",
+    description:
+      "Luma est une landing page conçue pour présenter une plateforme fictive dédiée aux créateurs de contenu.",
+    technologies: ["React", "TypeScript", "Vite"],
+    tags: ["Web", "Landing Page", "Design"],
+    category: "Personnel",
+    link: "https://github.com/ShAd-x/luma-demo",
+  },
 ];
