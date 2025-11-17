@@ -49,16 +49,21 @@ export default function Skills() {
               Frameworks
             </div>
             <div className="flex flex-wrap gap-2 justify-center">
-              {["Laravel", "Vue.js", "React.js", "Flutter", "Express.js"].map(
-                (fw) => (
-                  <span
-                    key={fw}
-                    className="bg-green-100 text-green-700 rounded px-3 py-1 text-sm font-semibold"
-                  >
-                    {fw}
-                  </span>
-                )
-              )}
+              {[
+                "Laravel",
+                "Vue.js",
+                "React.js",
+                "Flutter",
+                "Express.js",
+                "AdonisJS",
+              ].map((fw) => (
+                <span
+                  key={fw}
+                  className="bg-green-100 text-green-700 rounded px-3 py-1 text-sm font-semibold"
+                >
+                  {fw}
+                </span>
+              ))}
             </div>
           </Card>
           <Card className="p-6 flex flex-col items-center transition-transform duration-200 hover:scale-105 hover:shadow-lg">
@@ -70,16 +75,14 @@ export default function Skills() {
               Bases de données
             </div>
             <div className="flex flex-wrap gap-2 justify-center">
-              {["MySQL", "PostgreSQL", "MariaDB", "SQLite", "MongoDB"].map(
-                (db) => (
-                  <span
-                    key={db}
-                    className="bg-yellow-100 text-yellow-800 rounded px-3 py-1 text-sm font-semibold"
-                  >
-                    {db}
-                  </span>
-                )
-              )}
+              {["MySQL", "PostgreSQL", "MongoDB", "SQLite"].map((db) => (
+                <span
+                  key={db}
+                  className="bg-yellow-100 text-yellow-800 rounded px-3 py-1 text-sm font-semibold"
+                >
+                  {db}
+                </span>
+              ))}
             </div>
           </Card>
         </div>
