@@ -6,7 +6,7 @@ type LearnMoreProps = {
 };
 
 export default function LearnMore({
-  targetId = "mon-approche",
+  targetId = "experiences-professionnelles",
 }: LearnMoreProps) {
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
