@@ -18,14 +18,18 @@ export interface Profile {
 export const profile: Profile = {
   name: "Alexis Tatarkovic",
   title: "Développeur Fullstack",
-  email: "contact@alexistc.fr",
+  email: "alexis.tatarkovic@gmail.com",
   location: "Rouen, France",
   intro:
     "Avec plus de 3 ans d'expérience en développement web, je conçois et développe des produits utiles, performants et élégants.",
   avatar: "/img/me.jpeg",
   cv: "/cv.pdf",
   socials: [
-    { label: "Email", href: "mailto:contact@alexistc.fr", kind: "email" },
+    {
+      label: "Email",
+      href: "mailto:alexis.tatarkovic@gmail.com",
+      kind: "email",
+    },
     {
       label: "GitHub",
       href: "https://github.com/shad-x",
