@@ -4,4 +4,3 @@ Allow: /
 Sitemap: https://alexistc.fr/sitemap.xml
 
 Disallow: /src/assets/
-Disallow: /icons/
