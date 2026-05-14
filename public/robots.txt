@@ -1,6 +1,6 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://alexistc.fr/sitemap.xml
+Sitemap: https://www.alexistc.fr/sitemap.xml
 
 Disallow: /src/assets/
