@@ -23,6 +23,8 @@ export default function ProfileImage({
       <div className="relative z-10 h-full w-full overflow-hidden rounded-4xl">
         <img
           src={src}
+          srcSet={src ? `${src.replace('.webp', '-160.webp')} 160w, ${src.replace('.webp', '-320.webp')} 320w, ${src.replace('.webp', '-480.webp')} 480w, ${src} 768w` : undefined}
+          sizes="(max-width: 640px) 160px, (max-width: 768px) 192px, 224px"
           alt={alt}
           className="h-full w-full object-cover"
           loading="eager"
