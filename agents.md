@@ -1,7 +1,7 @@
 # Documentation Agents
 
 ## 1. Objectif Général
-Ce projet est un site web moderne conçu pour présenter un profil professionnel, des expériences, des formations et des projets. Il met l’accent sur la rapidité, l’accessibilité et la simplicité d’utilisation.
+Ce projet est un site web moderne conçu pour présenter un profil professionnel, des expériences et des projets. Il met l’accent sur la rapidité, l’accessibilité et la simplicité d’utilisation.
 Le projet doit être adapté SEO. Penser à mettre à jour le fichiers agents.md lors de modifications de structure.
 
 ## 2. Technologies
@@ -20,9 +20,8 @@ src/
     layout/            # Navbar, Footer
     sections/          # Sections principales (Hero, Projects, Skills, Timeline, Contact)
     ui/                # UI générique (Button, Card, ProfileImage)
-  data/                # Données structurées (experiences, formations, profile, projects)
+  data/                # Données structurées (experiences, profile, projects)
     experiences.ts     # Données des expériences
-    formations.ts      # Données des formations
     profile.ts         # Données du profil
     projects.ts        # Données des projets
   App.tsx              # Composant racine

@@ -22,7 +22,7 @@ export const profile: Profile = {
   location: "Rouen, France",
   intro:
     "Avec plus de 3 ans d'expérience en développement web, je conçois et développe des produits utiles, performants et élégants.",
-  avatar: "/img/me.jpeg",
+  avatar: "/img/me.webp",
   cv: "/cv.pdf",
   socials: [
     {

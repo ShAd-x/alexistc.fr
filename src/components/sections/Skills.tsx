@@ -24,9 +24,9 @@ export default function Skills() {
               className="text-blue-500 mb-2 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
               size={32}
             />
-            <div className="font-medium text-gray-800 mb-2 text-lg">
+            <h3 className="font-medium text-gray-800 mb-2 text-lg">
               Langages
-            </div>
+            </h3>
             <div className="flex flex-wrap gap-2 justify-center">
               {["PHP", "JavaScript", "Java", "TypeScript", "Dart"].map(
                 (lang) => (
@@ -45,9 +45,9 @@ export default function Skills() {
               className="text-green-500 mb-2 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
               size={32}
             />
-            <div className="font-medium text-gray-800 mb-2 text-lg">
+            <h3 className="font-medium text-gray-800 mb-2 text-lg">
               Frameworks
-            </div>
+            </h3>
             <div className="flex flex-wrap gap-2 justify-center">
               {[
                 "Laravel",
@@ -71,9 +71,9 @@ export default function Skills() {
               className="text-yellow-500 mb-2 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
               size={32}
             />
-            <div className="font-medium text-gray-800 mb-2 text-lg">
+            <h3 className="font-medium text-gray-800 mb-2 text-lg">
               Bases de données
-            </div>
+            </h3>
             <div className="flex flex-wrap gap-2 justify-center">
               {["MySQL", "PostgreSQL", "MongoDB", "SQLite"].map((db) => (
                 <span

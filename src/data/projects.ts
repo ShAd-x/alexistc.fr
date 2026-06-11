@@ -69,7 +69,7 @@ export const projects: Project[] = [
   {
     id: "portfolio",
     title: "Ce site - Mon portfolio personnel",
-    imageSrc: "/img/projects/portfolio.png",
+    imageSrc: "/img/projects/portfolio.webp",
     description:
       "Site web personnel, permettant de présenter mes compétences et mes projets. Ce site sert à mon activité professionnelle et est régulièrement mis à jour. Il est développé avec React, TypeScript et Tailwind CSS et est optimisé pour le référencement naturel (SEO).",
     technologies: ["React", "Tailwind", "TypeScript", "Vite"],
@@ -80,7 +80,7 @@ export const projects: Project[] = [
   {
     id: "pokemon-ios",
     title: "Application iOS Pokémon",
-    imageSrc: "/img/projects/cleanpoke.png",
+    imageSrc: "/img/projects/cleanpoke.webp",
     description:
       "Application iOS qui consomme l’API PokéAPI, Clean Architecture, gestion réseau et affichage structuré.",
     technologies: ["Swift", "PokéAPI"],
@@ -119,7 +119,7 @@ export const projects: Project[] = [
   {
     id: "gestion-materiel",
     title: "Application Web de Gestion de Matériel",
-    imageSrc: "/img/projects/angular.png",
+    imageSrc: "/img/projects/angular.webp",
     description:
       "Développement fullstack avec Angular (frontend) + Node.js/Express (backend) + MongoDB. Gestion d’équipements.",
     technologies: ["Angular", "Node.js", "Express", "MongoDB", "Mongoose"],
@@ -140,7 +140,7 @@ export const projects: Project[] = [
   {
     id: "bloctime",
     title: "BlocTime - Application de gestion du temps",
-    imageSrc: "/img/projects/bloctime.png",
+    imageSrc: "/img/projects/bloctime.webp",
     description:
       "BlocTime est une application mobile simple pour suivre son temps quotidien de manière visuelle. Chaque journée est découpée en blocs de 30 minutes, auxquels tu peux assigner une catégorie (Travail, Sommeil, Loisirs, etc.). Le but est de prendre conscience de son emploi du temps, identifier les habitudes et mieux gérer son temps.",
     technologies: ["Swift"],
@@ -151,7 +151,7 @@ export const projects: Project[] = [
   {
     id: "luma",
     title: "Luma - Application pour créateurs de contenu",
-    imageSrc: "/img/projects/luma.png",
+    imageSrc: "/img/projects/luma.webp",
     description:
       "Luma est une landing page conçue pour présenter une plateforme fictive dédiée aux créateurs de contenu.",
     technologies: ["React", "TypeScript", "Vite"],
