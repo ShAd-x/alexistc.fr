@@ -1,4 +1,4 @@
-import { Package, Code, Layers, Database } from "lucide-react";
+import { Package, Code, Layers, Database, CreditCard, Cpu, TrendingUp } from "lucide-react";
 
 import Card from "../ui/Card";
 
@@ -81,6 +81,78 @@ export default function Skills() {
                   className="bg-yellow-100 text-yellow-800 rounded px-3 py-1 text-sm font-semibold"
                 >
                   {db}
+                </span>
+              ))}
+            </div>
+          </Card>
+          <Card className="p-6 flex flex-col items-center transition-transform duration-200 hover:scale-105 hover:shadow-lg">
+            <CreditCard
+              className="text-red-500 mb-2 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
+              size={32}
+            />
+            <h3 className="font-medium text-gray-800 mb-2 text-lg">
+              E-commerce & Paiement
+            </h3>
+            <div className="flex flex-wrap gap-2 justify-center">
+              {[
+                "Paiement en ligne",
+                "Apple Pay / Google Pay",
+              ].map((tag) => (
+                <span
+                  key={tag}
+                  className="bg-red-100 text-red-700 rounded px-3 py-1 text-sm font-semibold"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </Card>
+          <Card className="p-6 flex flex-col items-center transition-transform duration-200 hover:scale-105 hover:shadow-lg">
+            <Cpu
+              className="text-orange-500 mb-2 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
+              size={32}
+            />
+            <h3 className="font-medium text-gray-800 mb-2 text-lg">
+              Industrialisation & Perf
+            </h3>
+            <div className="flex flex-wrap gap-2 justify-center">
+              {[
+                "Migrations SQL",
+                "Jobs asynchrones",
+                "Index & requêtes",
+                "Optimisation",
+                "Docker",
+              ].map((tag) => (
+                <span
+                  key={tag}
+                  className="bg-orange-100 text-orange-700 rounded px-3 py-1 text-sm font-semibold"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </Card>
+          <Card className="p-6 flex flex-col items-center transition-transform duration-200 hover:scale-105 hover:shadow-lg">
+            <TrendingUp
+              className="text-indigo-500 mb-2 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
+              size={32}
+            />
+            <h3 className="font-medium text-gray-800 mb-2 text-lg">
+              Expérimentation & SEO
+            </h3>
+            <div className="flex flex-wrap gap-2 justify-center">
+              {[
+                "A/B testing",
+                "Statistiques",
+                "Google Merchant",
+                "SEO technique",
+                "Données structurées",
+              ].map((tag) => (
+                <span
+                  key={tag}
+                  className="bg-indigo-100 text-indigo-700 rounded px-3 py-1 text-sm font-semibold"
+                >
+                  {tag}
                 </span>
               ))}
             </div>
