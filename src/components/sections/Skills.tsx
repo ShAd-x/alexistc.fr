@@ -51,6 +51,7 @@ export default function Skills() {
             <div className="flex flex-wrap gap-2 justify-center">
               {[
                 "Laravel",
+                "Livewire",
                 "Vue.js",
                 "React.js",
                 "Flutter",

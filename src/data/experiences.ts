@@ -2,6 +2,15 @@ import type { TimelineItem } from "../components/sections/Timeline";
 
 export const experiences: TimelineItem[] = [
   {
+    id: "exp-freelance-fullstack",
+    title: "Développeur Full-Stack indépendant",
+    company: "Micro-entreprise",
+    period: "Août 2026 · Aujourd’hui",
+    location: "Rouen, France",
+    description:
+      "Conception, développement et optimisation de solutions web et mobiles sur-mesure pour les clients, de l’idée à la mise en production, avec réactivité et expertise technique.",
+  },
+  {
     id: "exp-pdd",
     title: "Développeur Full-Stack",
     company: "Human to Computer",

@@ -5,6 +5,7 @@ import Projects from "./components/sections/Projects";
 import Contact from "./components/sections/Contact";
 import Footer from "./components/layout/Footer/Footer";
 import Skills from "./components/sections/Skills";
+import Expertise from "./components/sections/Expertise";
 import { Github, Linkedin, Mail } from "lucide-react";
 import { profile } from "./data/profile";
 import { projects } from "./data/projects";
@@ -62,6 +63,7 @@ function App() {
           socials={heroSocials}
           location={profile.location}
         />
+        <Expertise />
         <Timeline
           sectionId="experiences-professionnelles"
           items={experiences}
