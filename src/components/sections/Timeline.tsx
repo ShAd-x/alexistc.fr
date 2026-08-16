@@ -57,7 +57,7 @@ export default function Timeline({
               </div>
 
               {it.description ? (
-                <p className="mt-2 max-w-3xl text-sm text-gray-600">
+                <p className="mt-2 max-w-3xl text-sm leading-relaxed text-gray-600 whitespace-pre-line">
                   {it.description}
                 </p>
               ) : null}

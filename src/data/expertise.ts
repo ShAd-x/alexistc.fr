@@ -1,5 +1,5 @@
 export const expertiseText =
-  "Je vous accompagne de l’idée à la mise en ligne : écoute, conseils, maquettage, développement agile, et suivi personnalisé. Mon objectif : transformer vos besoins en solutions concrètes, modernes et accessibles, tout en vous offrant une expérience fluide et transparente.";
+  "Je vous accompagne de l’idée à la mise en ligne : écoute, conseils, prototypage, développement agile, et suivi personnalisé.\nMon objectif : transformer vos besoins en solutions concrètes, modernes et accessibles, tout en vous offrant une expérience fluide et transparente.";
 
 export type Step = {
   icon: "lightbulb" | "layers" | "rocket" | "users";
@@ -15,8 +15,8 @@ export const expertiseSteps: Step[] = [
   },
   {
     icon: "layers",
-    title: "Maquettage & conception",
-    desc: "Création de maquettes modernes et fonctionnelles (UX/UI), validation avec vous avant tout développement.",
+    title: "Prototypage & conception",
+    desc: "Création de prototypes modernes et fonctionnels (UX/UI), validation avec vous avant tout développement.",
   },
   {
     icon: "rocket",

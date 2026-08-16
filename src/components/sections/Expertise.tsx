@@ -19,7 +19,7 @@ const Expertise = () => (
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-blue-600 drop-shadow">
         Mon approche pour votre réussite
       </h2>
-      <p className="mb-10 text-lg text-center text-gray-700 max-w-2xl mx-auto">
+      <p className="mb-10 text-lg leading-relaxed text-center text-gray-700 max-w-2xl mx-auto whitespace-pre-line">
         {expertiseText}
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
