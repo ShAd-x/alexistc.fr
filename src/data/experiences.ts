@@ -17,7 +17,7 @@ export const experiences: TimelineItem[] = [
     period: "Décembre 2025 · Août 2026",
     location: "Rouen, France",
     description:
-      "Développement full-stack sur un e-commerce pharmaceutique en production (PHP 8 legacy). Passerelle de paiement bancaire (CAWL), framework d'A/B testing server-side et carte de choix des points relais unifiée (Leaflet, géocodage Nominatim).\nIndustrialisation du socle PHP brut : migrations SQL maison, file de jobs asynchrones (workers exécutés par cron), maillage interne SEO automatisé, benchmark de chargement des pages et mise en place de règles pour le développement assisté par IA. Synchronisation du catalogue vers la Google Merchant API.\nEn parallèle, refonte vers une architecture découplée : API GraphQL (Laravel, Octane) + front Blade (htmx).",
+      "Développement full-stack sur un e-commerce pharmaceutique en production (PHP 8 legacy). Passerelle de paiement bancaire (CAWL), framework d'A/B testing server-side et carte de choix des points relais unifiée (Leaflet).\nIndustrialisation du socle PHP brut : migrations SQL maison, file de jobs asynchrones (workers exécutés par cron), maillage interne SEO automatisé, benchmark de chargement des pages et mise en place de règles pour le développement assisté par IA. Synchronisation du catalogue vers la Google Merchant API.\nEn parallèle, refonte vers une architecture découplée : API GraphQL (Laravel, Octane) + front Blade (htmx).",
     skills: [
       "PHP 8",
       "MySQL / MariaDB",
