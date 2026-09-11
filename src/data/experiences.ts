@@ -2,9 +2,9 @@ import type { TimelineItem } from "../components/sections/Timeline";
 
 export const experiences: TimelineItem[] = [
   {
-    id: "exp-freelance-fullstack",
+    id: "exp-freelance-full-stack",
     title: "Développeur Full-Stack indépendant",
-    company: "Micro-entreprise",
+    company: "Devlexo Studio",
     period: "Août 2026 · Aujourd’hui",
     location: "Rouen, France",
     description:
@@ -40,7 +40,7 @@ export const experiences: TimelineItem[] = [
     period: "Septembre 2022 · Septembre 2025",
     location: "Amiens, France",
     description:
-      "Conception et développement d'outils pour la gestion des pointages et la génération de PDF personnalisés (Laravel, Vue.js, Docker).\nModernisation de l'application mobile (Flutter, architecture BLoC) et migration de pages Blade vers Vue.js avec adaptation du back-end.\nMise en place de micro-services pour la génération de documents.",
+      "Mise en place d'une architecture micro-services sous Docker pour automatiser la génération de PDF personnalisés volumineux, permettant d'accélérer les temps de traitement et de fiabiliser les exports.\nModernisation de l'application web : migration progressive de vues Blade vers une interface réactive sous Vue.js, tout en optimisant les API Laravel sous-jacentes.\nRefonte de l'application mobile en Flutter (architecture BLoC) pour assurer un code maintenable et une navigation plus fluide sur le terrain.",
     skills: [
       "Laravel",
       "Vue.js",
@@ -61,7 +61,7 @@ export const experiences: TimelineItem[] = [
     period: "Mars 2022 · Juin 2022",
     location: "Amiens, France",
     description:
-      "Développement d'une application web de pointage par QR code (Laravel, Blade).\nParticipation à la correction de bugs, à l'amélioration des fonctionnalités et à l'ajout d'API.",
-    skills: ["Laravel", "Blade", "Bootstrap"],
+      "Conception et développement de bout en bout d'une application web métier de pointage par QR code (Laravel, Blade, MariaDB).\nConception d'API REST sécurisées pour fiabiliser la synchronisation des données internes et refactorisation continue du code, garantissant un parcours utilisateur fluide et une gestion robuste des flux de pointage.",
+    skills: ["Laravel", "Blade", "Bootstrap", "API"],
   },
 ];

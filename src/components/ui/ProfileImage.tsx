@@ -26,7 +26,7 @@ export default function ProfileImage({
           srcSet={src ? `${src.replace('.webp', '-160.webp')} 160w, ${src.replace('.webp', '-320.webp')} 320w, ${src.replace('.webp', '-480.webp')} 480w, ${src} 768w` : undefined}
           sizes="(max-width: 640px) 160px, (max-width: 768px) 192px, 224px"
           alt={alt}
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover object-[center_25%]"
           loading="eager"
         />
         <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/10" />
