@@ -1,7 +1,7 @@
 export interface SocialLink {
   label: string;
   href: string;
-  kind?: "email" | "github" | "linkedin" | "other";
+  kind?: "email" | "github" | "linkedin" | "malt" | "other";
 }
 
 export interface Profile {
@@ -39,6 +39,11 @@ export const profile: Profile = {
       label: "LinkedIn",
       href: "https://www.linkedin.com/in/alexis-tatarkovic-8a16031a1/",
       kind: "linkedin",
+    },
+    {
+      label: "Malt",
+      href: "https://www.malt.fr/profile/alexistatarkovic",
+      kind: "malt",
     },
   ],
 };

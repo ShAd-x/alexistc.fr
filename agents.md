@@ -19,7 +19,7 @@ src/
   components/          # Composants réutilisables
     layout/            # Navbar, Footer
     sections/          # Sections principales (Hero, Projects, Skills, Timeline, Contact)
-    ui/                # UI générique (Button, Card, ProfileImage)
+    ui/                # UI générique (Button, Card, ProfileImage, MaltIcon)
   data/                # Données structurées (experiences, profile, projects)
     experiences.ts     # Données des expériences
     profile.ts         # Données du profil

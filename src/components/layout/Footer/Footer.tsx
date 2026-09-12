@@ -1,5 +1,6 @@
 import React from "react";
 import { Github, Linkedin, Mail } from "lucide-react";
+import MaltIcon from "../../ui/MaltIcon";
 import { profile } from "../../../data/profile";
 import FooterBrand from "./FooterBrand";
 import FooterSocialLinks from "./FooterSocialLinks";
@@ -38,6 +39,9 @@ export default function Footer({
               break;
             case "linkedin":
               icon = <Linkedin size={16} />;
+              break;
+            case "malt":
+              icon = <MaltIcon size={16} />;
               break;
             default:
               icon = undefined;

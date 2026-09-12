@@ -6,6 +6,7 @@ import Contact from "./components/sections/Contact";
 import Footer from "./components/layout/Footer/Footer";
 import Skills from "./components/sections/Skills";
 import { Github, Linkedin, Mail } from "lucide-react";
+import MaltIcon from "./components/ui/MaltIcon";
 import { profile } from "./data/profile";
 import { projects } from "./data/projects";
 import { experiences } from "./data/experiences";
@@ -26,6 +27,9 @@ function App() {
       case "linkedin":
         icon = <Linkedin size={18} />;
         break;
+      case "malt":
+        icon = <MaltIcon size={18} />;
+        break;
       default:
         icon = <Mail size={18} />;
     }
@@ -43,6 +47,9 @@ function App() {
         break;
       case "linkedin":
         icon = <Linkedin size={16} />;
+        break;
+      case "malt":
+        icon = <MaltIcon size={16} />;
         break;
       default:
         icon = undefined;
