@@ -1,4 +1,4 @@
-import { Mail, Copy, Check } from "lucide-react";
+import { Mail, Copy, Check, ExternalLink } from "lucide-react";
 import { useState, useRef } from "react";
 import Button from "../ui/Button";
 import Firework from "../ui/Firework";
@@ -41,10 +41,27 @@ export default function Contact({
           <Mail size={20} />
         </div>
         <h2 className="mt-6 text-2xl font-bold tracking-tight sm:text-3xl">
-          {title}
+          <a
+            href="https://atcode.fr/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover-smooth underline decoration-blue-600 decoration-2 underline-offset-4 hover:text-blue-600 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600"
+          >
+            {title}
+          </a>
         </h2>
         <p className="mx-auto mt-2 max-w-xl text-gray-600">{subtitle}</p>
         <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row relative">
+          <Button
+            href="https://atcode.fr/"
+            icon={<ExternalLink size={18} />}
+            aria-label="Découvrir atcode.fr"
+            title="Découvrir atcode.fr"
+            targetBlank
+            variant="secondary"
+          >
+            atcode.fr
+          </Button>
           <Button
             href={mailto}
             icon={<Mail size={18} />}

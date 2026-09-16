@@ -4,6 +4,7 @@ export type TimelineItem = {
   id: string;
   title: string;
   company?: string;
+  companyLink?: string;
   period: string;
   location?: string;
   description?: string;
@@ -46,7 +47,21 @@ export default function Timeline({
                   <h3 className="text-base font-semibold text-gray-900">
                     {it.title}
                     {it.company ? (
-                      <span className="text-gray-500"> · {it.company}</span>
+                      <span className="text-gray-500">
+                        {" · "}
+                        {it.companyLink ? (
+                          <a
+                            href={it.companyLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover-smooth underline decoration-blue-600 decoration-1 underline-offset-2 hover:text-blue-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                          >
+                            {it.company}
+                          </a>
+                        ) : (
+                          it.company
+                        )}
+                      </span>
                     ) : null}
                   </h3>
                   {it.location ? (

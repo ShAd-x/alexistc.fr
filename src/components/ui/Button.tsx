@@ -23,7 +23,7 @@ export default function Button({
   ...props
 }: ButtonProps) {
   const base =
-    "inline-flex items-center gap-2 rounded-md text-sm font-medium focus:outline-none transition-transform duration-175 ease-in-out";
+    "inline-flex items-center gap-2 rounded-md text-sm font-medium focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600 transition-transform duration-175 ease-in-out";
   let variantClass = "";
 
   if (variant === "primary") {
