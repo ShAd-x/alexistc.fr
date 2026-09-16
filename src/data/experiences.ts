@@ -4,7 +4,7 @@ export const experiences: TimelineItem[] = [
   {
     id: "exp-freelance-full-stack",
     title: "Développeur Full-Stack indépendant",
-    company: "Devlexo Studio",
+    company: "atcode.",
     period: "Août 2026 · Aujourd’hui",
     location: "Rouen, France",
     description:
