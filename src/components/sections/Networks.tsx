@@ -161,8 +161,7 @@ export default function Networks() {
 
   const updateHoveredCell = (
     target: HTMLElement,
-    day: ContributionDay,
-    isClick = false
+    day: ContributionDay
   ) => {
     if (!containerRef.current) return;
     const cellRect = target.getBoundingClientRect();
@@ -170,16 +169,11 @@ export default function Networks() {
     const x = cellRect.left - contRect.left + cellRect.width / 2;
     const y = cellRect.top - contRect.top;
 
-    setHoveredCell((prev) => {
-      if (isClick && prev?.day.date === day.date) {
-        return null;
-      }
-      return {
-        day,
-        x,
-        y,
-        contWidth: contRect.width,
-      };
+    setHoveredCell({
+      day,
+      x,
+      y,
+      contWidth: contRect.width,
     });
   };
 
@@ -419,15 +413,29 @@ export default function Networks() {
                         key={cell.date}
                         className="gh-cell"
                         data-l={cell.level}
-                        title={`${cell.count} contribution${cell.count > 1 ? "s" : ""} le ${formatContributionDate(cell.date)}`}
+                        role="button"
+                        tabIndex={0}
+                        aria-label={`${cell.count} contribution${cell.count > 1 ? "s" : ""} le ${formatContributionDate(cell.date)}`}
                         onClick={(e) => {
                           e.stopPropagation();
-                          updateHoveredCell(e.currentTarget, cell, true);
+                          updateHoveredCell(e.currentTarget, cell);
                         }}
-                        onMouseEnter={(e) => {
-                          updateHoveredCell(e.currentTarget, cell, false);
+                        onPointerEnter={(e) => {
+                          if (e.pointerType !== "touch") {
+                            updateHoveredCell(e.currentTarget, cell);
+                          }
                         }}
-                        onMouseLeave={() => setHoveredCell(null)}
+                        onPointerLeave={(e) => {
+                          if (e.pointerType !== "touch") {
+                            setHoveredCell(null);
+                          }
+                        }}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter" || e.key === " ") {
+                            e.preventDefault();
+                            updateHoveredCell(e.currentTarget, cell);
+                          }
+                        }}
                       />
                     ) : (
                       <span key={`pad-${idx}`} aria-hidden="true" />
