@@ -125,12 +125,17 @@
 
   html {
     scroll-behavior: smooth;
+    overflow-x: clip;
     font-family: var(--font-sans);
     background-color: var(--bg-main);
     color: var(--text-primary);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+  }
+
+  body {
+    overflow-x: clip;
   }
 
   ::selection {
@@ -883,6 +888,8 @@ section[id] {
 .gh-heatmap-scroll {
   overflow-x: auto;
   padding-bottom: 8px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
 }
 
 .gh-heatmap-plot {

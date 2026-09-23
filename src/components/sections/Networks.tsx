@@ -54,6 +54,56 @@ interface HoveredCellInfo {
   day: ContributionDay;
   x: number;
   y: number;
+  contWidth: number;
+}
+
+function getTooltipPosition(x: number, y: number, contWidth: number) {
+  const isRight = contWidth - x < 150 || (contWidth < 320 && x > contWidth / 2);
+  const isLeft = !isRight && (x < 150 || (contWidth < 320 && x <= contWidth / 2));
+
+  if (isRight) {
+    const distFromRight = contWidth - x;
+    return {
+      container: {
+        right: "12px",
+        top: `${Math.max(10, y - 10)}px`,
+        transform: "translateY(-100%)",
+      } as React.CSSProperties,
+      arrow: {
+        right: `${Math.max(14, Math.min(contWidth - 36, distFromRight - 12))}px`,
+        bottom: "-4px",
+        transform: "translateX(50%) rotate(45deg)",
+      } as React.CSSProperties,
+    };
+  }
+
+  if (isLeft) {
+    return {
+      container: {
+        left: "12px",
+        top: `${Math.max(10, y - 10)}px`,
+        transform: "translateY(-100%)",
+      } as React.CSSProperties,
+      arrow: {
+        left: `${Math.max(14, Math.min(contWidth - 36, x - 12))}px`,
+        bottom: "-4px",
+        transform: "translateX(-50%) rotate(45deg)",
+      } as React.CSSProperties,
+    };
+  }
+
+  return {
+    container: {
+      left: `${x}px`,
+      top: `${Math.max(10, y - 10)}px`,
+      transform: "translate(-50%, -100%)",
+    } as React.CSSProperties,
+    arrow: {
+      left: "50%",
+      bottom: "-4px",
+      transform: "translateX(-50%) rotate(45deg)",
+    } as React.CSSProperties,
+  };
 }
 
 export default function Networks() {
@@ -61,6 +111,7 @@ export default function Networks() {
   const [contributions, setContributions] = useState<ContributionDay[] | null>(null);
   const [loadError, setLoadError] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -76,6 +127,61 @@ export default function Networks() {
     void loadContributions();
     return () => controller.abort();
   }, []);
+
+  // Automatically scroll the heatmap all the way to the right (today) on load
+  useEffect(() => {
+    if (!contributions || !scrollRef.current) return;
+    const el = scrollRef.current;
+    const scrollToRight = () => {
+      if (el) {
+        el.scrollLeft = el.scrollWidth;
+      }
+    };
+    scrollToRight();
+    const rAF = requestAnimationFrame(scrollToRight);
+    const timer = setTimeout(scrollToRight, 60);
+
+    return () => {
+      cancelAnimationFrame(rAF);
+      clearTimeout(timer);
+    };
+  }, [contributions]);
+
+  // Dismiss tooltip when tapping outside
+  useEffect(() => {
+    if (!hoveredCell) return;
+    const handlePointerDown = (e: MouseEvent | TouchEvent) => {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        setHoveredCell(null);
+      }
+    };
+    window.addEventListener("pointerdown", handlePointerDown as EventListener);
+    return () => window.removeEventListener("pointerdown", handlePointerDown as EventListener);
+  }, [hoveredCell]);
+
+  const updateHoveredCell = (
+    target: HTMLElement,
+    day: ContributionDay,
+    isClick = false
+  ) => {
+    if (!containerRef.current) return;
+    const cellRect = target.getBoundingClientRect();
+    const contRect = containerRef.current.getBoundingClientRect();
+    const x = cellRect.left - contRect.left + cellRect.width / 2;
+    const y = cellRect.top - contRect.top;
+
+    setHoveredCell((prev) => {
+      if (isClick && prev?.day.date === day.date) {
+        return null;
+      }
+      return {
+        day,
+        x,
+        y,
+        contWidth: contRect.width,
+      };
+    });
+  };
 
   const { cells, months, weekCount, total } = useMemo(() => {
     if (!contributions) return { cells: [] as ContributionCell[], months: [], weekCount: 0, total: 0 };
@@ -222,26 +328,31 @@ export default function Networks() {
 
       {/* GitHub Heatmap Activity Container */}
       <div ref={containerRef} className="reveal-on-scroll p-6 sm:p-8 rounded-3xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] gh-heatmap relative">
-        {/* Floating Tooltip positioned near hovered cell */}
-        {hoveredCell && (
-          <div
-            className="pointer-events-none absolute z-30 px-3 py-1.5 rounded-lg bg-[var(--bg-surface-elevated)] border border-[var(--border-accent)] shadow-xl text-xs font-mono text-[var(--text-primary)] whitespace-nowrap transition-all duration-200 ease-out"
-            style={{
-              left: `${hoveredCell.x}px`,
-              top: `${hoveredCell.y - 10}px`,
-              transform: "translate(-50%, -100%)",
-            }}
-          >
-            <span className="text-[var(--accent-text)] font-semibold">
-              {hoveredCell.day.count === 0
-                ? "0 contribution"
-                : `${hoveredCell.day.count} contribution${hoveredCell.day.count > 1 ? "s" : ""}`}
-            </span>
-            <span className="text-[var(--text-secondary)] ml-1.5">le {formatContributionDate(hoveredCell.day.date)}</span>
-            {/* Arrow indicator */}
-            <div className="absolute left-1/2 -bottom-1 -translate-x-1/2 w-2 h-2 rotate-45 bg-[var(--bg-surface-elevated)] border-r border-b border-[var(--border-accent)]" />
-          </div>
-        )}
+        {/* Floating Tooltip clamped to container to avoid any mobile overflow */}
+        {(() => {
+          const tooltipPos = hoveredCell
+            ? getTooltipPosition(hoveredCell.x, hoveredCell.y, hoveredCell.contWidth)
+            : null;
+
+          return hoveredCell && tooltipPos ? (
+            <div
+              className="pointer-events-none absolute z-30 px-3 py-1.5 rounded-lg bg-[var(--bg-surface-elevated)] border border-[var(--border-accent)] shadow-xl text-xs font-mono text-[var(--text-primary)] whitespace-nowrap max-w-[calc(100%-24px)] transition-all duration-150 ease-out"
+              style={tooltipPos.container}
+            >
+              <span className="text-[var(--accent-text)] font-semibold">
+                {hoveredCell.day.count === 0
+                  ? "0 contribution"
+                  : `${hoveredCell.day.count} contribution${hoveredCell.day.count > 1 ? "s" : ""}`}
+              </span>
+              <span className="text-[var(--text-secondary)] ml-1.5">le {formatContributionDate(hoveredCell.day.date)}</span>
+              {/* Arrow indicator pointing to cell */}
+              <div
+                className="absolute w-2 h-2 bg-[var(--bg-surface-elevated)] border-r border-b border-[var(--border-accent)] pointer-events-none"
+                style={tooltipPos.arrow}
+              />
+            </div>
+          ) : null;
+        })()}
 
         <div className="flex items-center pb-5 border-b border-[var(--border-subtle)] mb-6">
           <div className="flex items-center gap-3">
@@ -278,9 +389,13 @@ export default function Networks() {
           <>
             {/* Scrollable Heatmap Grid */}
             <div
+              ref={scrollRef}
               className="gh-heatmap-scroll"
               role="img"
               aria-label={`Calendrier GitHub : ${total} contributions sur les 12 derniers mois`}
+              onScroll={() => {
+                if (hoveredCell) setHoveredCell(null);
+              }}
             >
               <div className="gh-heatmap-plot">
                 <div className="gh-heatmap-months" style={{ gridTemplateColumns: `repeat(${weekCount}, var(--cell))` }}>
@@ -305,16 +420,12 @@ export default function Networks() {
                         className="gh-cell"
                         data-l={cell.level}
                         title={`${cell.count} contribution${cell.count > 1 ? "s" : ""} le ${formatContributionDate(cell.date)}`}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          updateHoveredCell(e.currentTarget, cell, true);
+                        }}
                         onMouseEnter={(e) => {
-                          if (containerRef.current) {
-                            const cellRect = e.currentTarget.getBoundingClientRect();
-                            const contRect = containerRef.current.getBoundingClientRect();
-                            setHoveredCell({
-                              day: cell,
-                              x: cellRect.left - contRect.left + cellRect.width / 2,
-                              y: cellRect.top - contRect.top,
-                            });
-                          }
+                          updateHoveredCell(e.currentTarget, cell, false);
                         }}
                         onMouseLeave={() => setHoveredCell(null)}
                       />
@@ -329,7 +440,21 @@ export default function Networks() {
             {/* Foot Stats & Legend */}
             <div className="flex flex-wrap items-center justify-between gap-4 pt-5 border-t border-[var(--border-subtle)] mt-6 text-xs text-[var(--text-secondary)] font-mono">
               <div>
-                <strong className="text-[var(--text-primary)] text-sm font-mono mr-1">{total.toLocaleString("fr-FR")}</strong> contributions sur les 12 derniers mois
+                {hoveredCell ? (
+                  <span>
+                    <strong className="text-[var(--accent-text)] text-sm font-mono mr-1">
+                      {hoveredCell.day.count} contribution{hoveredCell.day.count > 1 ? "s" : ""}
+                    </strong>{" "}
+                    le {formatContributionDate(hoveredCell.day.date)}
+                  </span>
+                ) : (
+                  <span>
+                    <strong className="text-[var(--text-primary)] text-sm font-mono mr-1">
+                      {total.toLocaleString("fr-FR")}
+                    </strong>{" "}
+                    contributions sur les 12 derniers mois
+                  </span>
+                )}
               </div>
 
               <div className="flex items-center gap-2">
