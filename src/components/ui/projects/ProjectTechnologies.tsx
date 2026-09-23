@@ -9,11 +9,11 @@ export default function ProjectTechnologies({
 }: ProjectTechnologiesProps) {
   if (!technologies || technologies.length === 0) return null;
   return (
-    <div className={`flex flex-wrap gap-2 ${className}`}>
+    <div className={`flex flex-wrap gap-1.5 ${className}`}>
       {technologies.map((tech) => (
         <span
           key={tech}
-          className="rounded-md border border-blue-200 bg-blue-50 px-2 py-1 text-xs text-blue-700 font-semibold"
+          className="rounded-md border border-[var(--border-subtle)] bg-[var(--bg-surface-elevated)] px-2 py-0.5 font-mono text-[11px] text-[var(--text-secondary)]"
         >
           {tech}
         </span>

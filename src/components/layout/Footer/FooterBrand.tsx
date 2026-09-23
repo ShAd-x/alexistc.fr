@@ -11,9 +11,9 @@ export default function FooterBrand({
 }: FooterBrandProps) {
   return (
     <div className="text-center sm:text-left">
-      <p className="text-sm font-semibold text-gray-900">{name}</p>
-      <p className="text-xs text-gray-500">
-        {location ? `${location} · ` : ""}© {year} · Tous droits réservés
+      <p className="text-sm font-bold text-white tracking-tight">{name}</p>
+      <p className="text-xs font-mono text-zinc-500 mt-0.5">
+        {location ? `${location} · ` : ""}© {year} · Conçu et développé par Alexis Tatarkovic
       </p>
     </div>
   );

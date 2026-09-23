@@ -1,94 +1,98 @@
-import { Mail, Copy, Check, ExternalLink } from "lucide-react";
 import { useState, useRef } from "react";
-import Button from "../ui/Button";
-import Firework from "../ui/Firework";
+import { Mail, Copy, Check, ArrowUpRight } from "lucide-react";
+import MaltIcon from "../ui/MaltIcon";
 
 type ContactProps = {
   email: string;
-  title?: string;
-  subtitle?: string;
 };
 
-export default function Contact({
-  email,
-  title = "Une idée, un projet ?",
-  subtitle = "Discutons ensemble. Je réponds rapidement.",
-}: ContactProps) {
-  const mailto = `mailto:${email}`;
+export default function Contact({ email }: ContactProps) {
   const [copied, setCopied] = useState(false);
   const timeoutRef = useRef<number | null>(null);
 
-  function copyEmail() {
+  const copyEmail = () => {
     try {
       void navigator.clipboard.writeText(email);
       setCopied(true);
       if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
-      timeoutRef.current = window.setTimeout(() => setCopied(false), 1800);
+      timeoutRef.current = window.setTimeout(() => setCopied(false), 2000);
     } catch {
-      // Fallback: sélection + prompt
-      try {
-        window.prompt("Copiez l'adresse email :", email);
-      } catch {
-        /* noop */
-      }
+      window.prompt("Copiez l'adresse email :", email);
     }
-  }
+  };
 
   return (
-    <section id="contact" className="border-b border-gray-200/60">
-      <div className="mx-auto max-w-6xl px-4 py-16 text-center md:py-24">
-        <div className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-white">
-          <Mail size={20} />
+    <section id="contact" className="section-wrapper">
+      <div className="reveal-on-scroll rounded-3xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] hover:border-[var(--border-accent)] transition-colors duration-500 p-8 sm:p-12 lg:p-16 relative overflow-hidden text-center shadow-lg">
+        {/* Subtle ambient light in contact card */}
+        <div className="absolute -top-24 left-1/2 -translate-x-1/2 size-72 rounded-full bg-[var(--accent-subtle)] opacity-40 blur-3xl pointer-events-none" />
+
+        <div className="relative z-10 max-w-2xl mx-auto space-y-5">
+
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[var(--text-primary)] leading-[1.1]">
+            Me contacter<span className="text-[var(--accent-text)]">.</span>
+          </h2>
+
+          <p className="text-base text-[var(--text-secondary)] leading-relaxed">
+            Une question, une mission freelance ou simplement envie d'échanger sur un projet ? Vous pouvez m'écrire directement par email ou me retrouver sur Malt et LinkedIn.
+          </p>
+
+          {/* Action CTAs */}
+          <div className="pt-4 flex flex-wrap items-center justify-center gap-3">
+            {/* Direct Mailto Button */}
+            <a
+              href={`mailto:${email}`}
+              className="btn-primary !py-3 !px-6"
+            >
+              <Mail size={15} />
+              <span>{email}</span>
+              <ArrowUpRight size={14} />
+            </a>
+
+            {/* Quick Copy Button */}
+            <button
+              type="button"
+              onClick={copyEmail}
+              className="btn-secondary !py-3 !px-5 cursor-pointer"
+            >
+              {copied ? (
+                <>
+                  <Check size={15} className="text-[var(--accent-text)]" />
+                  <span>Adresse copiée !</span>
+                </>
+              ) : (
+                <>
+                  <Copy size={15} />
+                  <span>Copier l'email</span>
+                </>
+              )}
+            </button>
+
+            {/* Malt button */}
+            <a
+              href="https://www.malt.fr/profile/alexistatarkovic"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary !py-3 !px-5"
+            >
+              <MaltIcon size={15} />
+              <span>Malt</span>
+              <ArrowUpRight size={13} />
+            </a>
+          </div>
+
+          <div className="pt-8 mt-6 border-t border-[var(--border-subtle)]">
+            <a
+              href="https://atcode.fr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium text-[var(--accent-text)] hover:underline inline-flex items-center gap-1"
+            >
+              <span>Studio web atcode</span>
+              <ArrowUpRight size={14} />
+            </a>
+          </div>
         </div>
-        <h2 className="mt-6 text-2xl font-bold tracking-tight sm:text-3xl">
-          <a
-            href="https://atcode.fr/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover-smooth underline decoration-blue-600 decoration-2 underline-offset-4 hover:text-blue-600 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600"
-          >
-            {title}
-          </a>
-        </h2>
-        <p className="mx-auto mt-2 max-w-xl text-gray-600">{subtitle}</p>
-        <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row relative">
-          <Button
-            href="https://atcode.fr/"
-            icon={<ExternalLink size={18} />}
-            aria-label="Découvrir atcode.fr"
-            title="Découvrir atcode.fr"
-            targetBlank
-            variant="secondary"
-          >
-            atcode.fr
-          </Button>
-          <Button
-            href={mailto}
-            icon={<Mail size={18} />}
-            aria-label={`Envoyer un mail à ${email}`}
-            title={`Envoyer un mail à ${email}`}
-            variant="primary"
-          >
-            {email}
-          </Button>
-          <button
-            type="button"
-            onClick={copyEmail}
-            aria-label={copied ? "Email copié" : "Copier l'email"}
-            className="hover-smooth inline-flex items-center gap-2 rounded-md border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 cursor-pointer relative"
-          >
-            {copied ? (
-              <Check size={16} className="text-green-500" />
-            ) : (
-              <Copy size={16} />
-            )}
-            <span>{copied ? "Copié !" : "Copier"}</span>
-            {copied && <Firework />}
-          </button>
-        </div>
-        <span className="sr-only" aria-live="polite">
-          {copied ? "Adresse email copiée" : ""}
-        </span>
       </div>
     </section>
   );

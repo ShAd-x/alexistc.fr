@@ -12,7 +12,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: "piesente",
-    title: "Piesente.fr – Deuxième année de master",
+    title: "Piesente.fr (Master 2)",
     imageSrc: "/img/projects/piesente.webp",
     description:
       "Projet universitaire en équipe de cinq personnes, consistant en la refonte complète du site web d’une association de marche. Nous avons assuré l’ensemble du cycle de production, depuis le recueil des besoins et la rédaction du cahier des charges en collaboration avec le client, jusqu’à la conception de maquettes fonctionnelles et la rédaction de documents techniques. J’ai également participé au développement complet de l’application, front-end et back-end, ainsi qu’à sa mise en production finale.",
@@ -90,7 +90,7 @@ export const projects: Project[] = [
   },
   {
     id: "medicit",
-    title: "MedicIT – Première année de master",
+    title: "MedicIT (Master 1)",
     imageSrc: "/img/projects/medicit.webp",
     description:
       "Application de gestion d’un cabinet médical (comptes patients/médecins, validation, ordonnances).",

@@ -1,131 +1,36 @@
-import { Github, Mail } from "lucide-react";
-import React from "react";
-import Button from "../ui/Button";
-import ProfileImage from "../ui/ProfileImage";
-import { MapPin } from "lucide-react";
-import "./HeroWave.css";
-import "./HeroAvailable.css";
-import LearnMore from "../ui/LearnMore";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
 
-type SocialLink = {
-  href: string;
-  label: string;
-  icon: React.ReactNode;
-};
-
-type HeroProps = {
-  name: string;
-  title: string;
-  intro?: string;
-  avatarSrc?: string;
-  socials?: SocialLink[];
-  cvHref?: string;
-  location?: string;
-};
-
-export default function Hero({
-  name,
-  title,
-  intro,
-  avatarSrc,
-  socials,
-  location,
-}: HeroProps) {
-  const [first, ...rest] = name.split(" ");
-  const last = rest.join(" ");
-
+export default function Hero() {
   return (
-    <section id="accueil" className="border-b border-gray-200/60">
-      <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-4 py-12 md:grid-cols-2 md:py-20">
-        <div>
-          <p className="text-sm font-medium text-blue-600">Portfolio</p>
-          <h1 className="relative mt-3 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-            <span
-              className="inline-block origin-bottom animate-wave text-3xl mr-2 align-middle relative -top-1"
-              role="img"
-              aria-label="bonjour"
-            >
-              👋
-            </span>
-            Bonjour, je suis{" "}
-            <span className="text-blue-600">
-              {first} {last}
-            </span>
-          </h1>
-          <p className="relative mt-3 text-lg font-medium text-gray-800">
-            <span className="relative inline-block">
-              <span
-                className="absolute left-0 right-0 top-1/2 -translate-y-1/2 -z-10 bg-blue-600 opacity-100 rotate-[-2deg] h-[36px] w-full rounded-md backdrop-blur-none"
-                aria-hidden="true"
-              />
-              <span className="relative px-2 text-white">{title}</span>
-            </span>
-          </p>
-          <p className="mt-4 max-w-prose text-gray-800">{intro}</p>
-          <div className="mt-2 flex items-center text-gray-800 text-sm font-medium">
-            <MapPin className="w-4 h-4 mr-1" />
-            {location}
-          </div>
-          <div className="mt-4 flex items-center gap-4">
-            <span className="flex items-center text-blue-600 font-semibold">
-              <span
-                className="animate-blink mr-1 mb-1 text-2xl leading-none"
-                style={{ fontSize: "1.5em" }}
-              >
-                •
-              </span>
-              Disponible pour de nouvelles missions !
-            </span>
-          </div>
-          <div className="mt-6 flex flex-wrap items-center gap-3">
-            <Button
-              href="#contact"
-              icon={<Mail size={18} />}
-              aria-label="Discutons de votre projet"
-              title="Discutons de votre projet"
-              variant="primary"
-            >
-              Discutons de votre projet
-            </Button>
+    <section id="accueil" className="pt-6 pb-16 md:pt-12 md:pb-20">
+      <h1 className="space-y-2 md:space-y-3 mb-10">
+        <span className="block text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-[-0.04em] leading-[0.98] text-[var(--text-primary)]">
+          Développeur full-stack.
+        </span>
+        <span className="block text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-[-0.04em] leading-[0.98] text-[var(--text-secondary)]">
+          Web et applications.
+        </span>
+        <span className="hero-accent block text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-[-0.04em] leading-[1.08] pb-2">
+          Simple et pérenne.
+        </span>
+      </h1>
 
-            <Button
-              href="https://github.com/shad-x"
-              icon={<Github size={18} />}
-              aria-label="Voir mon GitHub"
-              title="Voir mon GitHub"
-              targetBlank={true}
-              variant="primary"
-            >
-              Voir mon GitHub
-            </Button>
+      <div className="max-w-3xl">
+        <p className="text-base sm:text-lg leading-relaxed text-[var(--text-secondary)]">
+          Développeur basé à Rouen, je conçois et réalise des <strong className="text-[var(--text-primary)] font-medium">applications web et mobiles sur mesure</strong>, de l'architecture back-end aux interfaces soignées. Je privilégie le code lisible, les performances concrètes et l'autonomie technique, pour des projets personnels ou des missions freelance.
+        </p>
 
-            <div className="flex items-center gap-2">
-              {socials!
-                .filter((l) => !l.label.toLowerCase().includes("github"))
-                .map((l) => (
-                  <Button
-                    key={l.href}
-                    href={l.href}
-                    icon={l.icon}
-                    aria-label={l.label}
-                    title={l.label}
-                    className="h-9 w-9 justify-center rounded-md border border-gray-200 bg-white text-gray-700 hover:bg-gray-50 p-0"
-                    targetBlank={l.href.startsWith("http")}
-                    variant="icon"
-                  >
-                    {null}
-                  </Button>
-                ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Photo */}
-        <div className="flex justify-center md:justify-end">
-          <ProfileImage src={avatarSrc} alt={`Photo de ${name}`} />
+        <div className="flex flex-wrap items-center gap-3 pt-8">
+          <a href="#projets" className="btn-primary">
+            <span>Voir les projets</span>
+            <ArrowDown size={14} />
+          </a>
+          <a href="https://atcode.fr/" target="_blank" rel="noopener noreferrer" className="btn-secondary">
+            <span>Studio web atcode</span>
+            <ArrowUpRight size={14} />
+          </a>
         </div>
       </div>
-      <LearnMore />
     </section>
   );
 }

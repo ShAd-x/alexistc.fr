@@ -23,21 +23,19 @@ export default function Button({
   ...props
 }: ButtonProps) {
   const base =
-    "inline-flex items-center gap-2 rounded-md text-sm font-medium focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600 transition-transform duration-175 ease-in-out";
+    "inline-flex items-center gap-2 text-sm font-medium transition-all duration-200 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)] cursor-pointer";
   let variantClass = "";
 
   if (variant === "primary") {
-    variantClass =
-      "bg-blue-600 text-white border border-blue-600 hover:bg-blue-700 hover:border-blue-700 hover:text-white px-5 h-9 hover:scale-105";
+    variantClass = "btn-primary !px-5 !py-2.5 !rounded-xl";
   } else if (variant === "icon") {
     variantClass =
-      "h-9 w-9 justify-center rounded-md border border-gray-200 bg-white text-gray-700 hover:bg-gray-50 p-0";
+      "h-10 w-10 justify-center rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface-elevated)] text-[var(--text-secondary)] hover:text-[var(--accent-text)] hover:border-[var(--border-accent)] p-0 hover:-translate-y-0.5 active:translate-y-0 shadow-sm";
   } else if (variant === "footer") {
-    variantClass = "bg-transparent text-gray-600 hover:text-blue-600 px-2 py-1";
+    variantClass = "bg-transparent text-[var(--text-secondary)] hover:text-[var(--accent-text)] px-2 py-1 transition-colors";
   } else {
     // secondary
-    variantClass =
-      "border border-gray-200 bg-white text-gray-700 hover:bg-gray-50 px-5 py-2.5";
+    variantClass = "btn-secondary !px-5 !py-2.5 !rounded-xl";
   }
 
   return (

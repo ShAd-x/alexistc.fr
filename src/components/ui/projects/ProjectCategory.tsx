@@ -8,9 +8,10 @@ export default function ProjectCategory({
   className = "",
 }: ProjectCategoryProps) {
   if (!category) return null;
+
   return (
     <span
-      className={`rounded-md bg-white/90 px-2 py-0.5 text-xs font-medium text-gray-700 shadow border border-gray-200 ${className}`}
+      className={`inline-flex items-center rounded-md border border-[var(--border-accent)] bg-[var(--accent-subtle)] px-2.5 py-1 text-xs font-mono font-medium text-[var(--accent-text)] ${className}`}
     >
       {category}
     </span>

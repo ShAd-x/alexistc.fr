@@ -1,66 +1,52 @@
-import React from "react";
-import { Github, Linkedin, Mail } from "lucide-react";
-import MaltIcon from "../../ui/MaltIcon";
-import { profile } from "../../../data/profile";
-import FooterBrand from "./FooterBrand";
-import FooterSocialLinks from "./FooterSocialLinks";
-import FooterNavLinks from "./FooterNavLinks";
-import FooterTech from "./FooterTech";
-
-type FooterLink = { href: string; label: string; icon?: React.ReactNode };
+import { ArrowUp } from "lucide-react";
+import { navLinks } from "../../../data/navLinks";
 
 type FooterProps = {
-  name: string;
+  name?: string;
   location?: string;
-  links?: FooterLink[];
-  navLinks?: { href: string; label: string }[];
 };
 
 export default function Footer({
-  name,
-  location,
-  links,
-  navLinks,
+  name = "Alexis Tatarkovic",
+  location = "Rouen, France",
 }: FooterProps) {
   const year = new Date().getFullYear();
 
-  // Source unique : props.links sinon profile.socials
-  const items: FooterLink[] =
-    links && links.length
-      ? links
-      : profile.socials.map((s) => {
-          let icon: React.ReactNode | undefined;
-          switch (s.kind) {
-            case "email":
-              icon = <Mail size={16} />;
-              break;
-            case "github":
-              icon = <Github size={16} />;
-              break;
-            case "linkedin":
-              icon = <Linkedin size={16} />;
-              break;
-            case "malt":
-              icon = <MaltIcon size={16} />;
-              break;
-            default:
-              icon = undefined;
-          }
-          return { href: s.href, label: s.label, icon };
-        });
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
-    <footer className="border-t border-gray-200/60 bg-white">
-      <div className="mx-auto max-w-6xl px-4 py-10">
-        <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
-          <FooterBrand name={name} location={location} year={year} />
-
-          <FooterSocialLinks links={items} />
+    <footer className="pt-12 pb-16 border-t border-[var(--border-subtle)] mt-24">
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-6 text-xs text-[var(--text-secondary)] font-mono">
+        <div>
+          <span>{name}</span>
+          <span className="mx-2 text-[var(--text-tertiary)]">·</span>
+          <span>{location}</span>
+          <span className="mx-2 text-[var(--text-tertiary)]">·</span>
+          <span>© {year}</span>
         </div>
 
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-xs text-gray-500 sm:justify-between">
-          <FooterNavLinks links={navLinks ? navLinks : []} />
-          <FooterTech />
+        <div className="flex items-center gap-6 flex-wrap justify-center">
+          {navLinks.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              className="text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
+            >
+              {l.label}
+            </a>
+          ))}
+
+          <button
+            type="button"
+            onClick={scrollToTop}
+            className="flex items-center gap-1.5 text-[var(--accent-text)] hover:underline cursor-pointer bg-transparent border-0 p-0"
+            aria-label="Retourner en haut de la page"
+          >
+            <span>Haut</span>
+            <ArrowUp size={13} />
+          </button>
         </div>
       </div>
     </footer>

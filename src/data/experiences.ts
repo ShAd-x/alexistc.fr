@@ -15,6 +15,7 @@ export const experiences: TimelineItem[] = [
     id: "exp-pdd",
     title: "Développeur Full-Stack",
     company: "Human to Computer",
+    companyLink: "https://www.humantocomputer.com/",
     period: "Décembre 2025 · Août 2026",
     location: "Rouen, France",
     description:
@@ -38,6 +39,7 @@ export const experiences: TimelineItem[] = [
     id: "exp-alt-teleric",
     title: "Développeur d'application (Alternance)",
     company: "Teleric",
+    companyLink: "https://www.teleric.net/",
     period: "Septembre 2022 · Septembre 2025",
     location: "Amiens, France",
     description:
@@ -59,6 +61,7 @@ export const experiences: TimelineItem[] = [
     id: "exp-stage-teleric",
     title: "Développeur web (Stage)",
     company: "Teleric",
+    companyLink: "https://www.teleric.net/",
     period: "Mars 2022 · Juin 2022",
     location: "Amiens, France",
     description:

@@ -1,164 +1,113 @@
-import { Package, Code, Layers, Database, CreditCard, Cpu, TrendingUp } from "lucide-react";
+import { Code2, Layers, Database, CreditCard, Cpu, TrendingUp } from "lucide-react";
 
-import Card from "../ui/Card";
+interface SkillGroup {
+  title: string;
+  tagline: string;
+  icon: typeof Code2;
+  items: string[];
+}
+
+const skillGroups: SkillGroup[] = [
+  {
+    title: "Langages",
+    tagline: "Typage strict, logique serveur robuste et développement applicatif",
+    icon: Code2,
+    items: ["TypeScript", "PHP", "JavaScript", "Java", "Dart"],
+  },
+  {
+    title: "Frameworks",
+    tagline: "Architectures modernes réactives, SPA, SSR et composants modulaires",
+    icon: Layers,
+    items: ["Laravel", "React.js", "Vue.js", "Livewire", "Flutter", "Express.js", "AdonisJS"],
+  },
+  {
+    title: "Bases de données",
+    tagline: "Modélisation relationnelle, volumétrie, intégrité et NoSQL",
+    icon: Database,
+    items: ["PostgreSQL", "MySQL", "MongoDB", "SQLite"],
+  },
+  {
+    title: "E-commerce et paiement",
+    tagline: "Tunnels de commande, flux sécurisés, webhooks et conformité 3DS",
+    icon: CreditCard,
+    items: ["Paiement en ligne", "Apple Pay / Google Pay", "Stripe API", "Gestion des flux"],
+  },
+  {
+    title: "Industrialisation et performance",
+    tagline: "Conteneurisation, queues asynchrones et optimisation SQL",
+    icon: Cpu,
+    items: ["Docker", "Jobs asynchrones", "Migrations SQL", "Index et requêtes", "Optimisation"],
+  },
+  {
+    title: "Expérimentation et SEO",
+    tagline: "Core Web Vitals, visibilité organique, analytics et données structurées",
+    icon: TrendingUp,
+    items: ["SEO technique", "Core Web Vitals", "Données structurées", "A/B testing", "Statistiques", "Google Merchant"],
+  },
+];
 
 export default function Skills() {
   return (
-    <section
-      id="competences"
-      className="border-b border-gray-200/60 bg-gray-50"
-    >
-      <div className="mx-auto max-w-6xl px-4 py-12 md:py-16">
-        <div className="mb-8 flex items-center gap-2">
-          <div className="flex items-center gap-2">
-            <div className="inline-flex h-9 w-9 items-center justify-center rounded-md bg-blue-600 text-white">
-              <Package size={18} />
-            </div>
-            <h2 className="text-2xl font-bold tracking-tight">Compétences</h2>
-          </div>
-        </div>
+    <section id="competences" className="section-wrapper">
+      <div className="section-head reveal-on-scroll">
+        <h2 className="section-title">
+          Compétences<span>.</span>
+        </h2>
+        <p className="section-subtitle">
+          Technologies maîtrisées, outils d'ingénierie et domaines d'expertise appliqués au quotidien.
+        </p>
+      </div>
 
-        <div className="md:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-6">
-          <Card className="p-6 flex flex-col items-center transition-transform duration-200 hover:scale-105 hover:shadow-lg">
-            <Code
-              className="text-blue-500 mb-2 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
-              size={32}
-            />
-            <h3 className="font-medium text-gray-800 mb-2 text-lg">
-              Langages
-            </h3>
-            <div className="flex flex-wrap gap-2 justify-center">
-              {["PHP", "JavaScript", "Java", "TypeScript", "Dart"].map(
-                (lang) => (
-                  <span
-                    key={lang}
-                    className="bg-blue-100 text-blue-700 rounded px-3 py-1 text-sm font-semibold"
-                  >
-                    {lang}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+        {skillGroups.map((group, index) => {
+          const Icon = group.icon;
+          const delayClass = `reveal-delay-${(index % 3) + 1}`;
+
+          return (
+            <article
+              key={group.title}
+              className={`skill-card reveal-on-scroll ${delayClass} group`}
+            >
+              {/* Subtle top amber accent line on hover */}
+              <div className="skill-card-line" />
+
+              {/* Ambient radial glow inside card on hover */}
+              <div className="skill-card-glow" />
+
+              <div>
+                {/* Header: Icon & Monospace Index */}
+                <div className="mb-5 flex items-start justify-between">
+                  <div className="skill-icon-box">
+                    <Icon size={22} strokeWidth={1.8} aria-hidden="true" />
+                  </div>
+                  <span className="font-mono text-xs font-semibold text-[var(--accent-text)] bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)] px-2.5 py-1 rounded-full">
+                    // {String(index + 1).padStart(2, "0")}
                   </span>
-                )
-              )}
-            </div>
-          </Card>
-          <Card className="p-6 flex flex-col items-center transition-transform duration-200 hover:scale-105 hover:shadow-lg">
-            <Layers
-              className="text-green-500 mb-2 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
-              size={32}
-            />
-            <h3 className="font-medium text-gray-800 mb-2 text-lg">
-              Frameworks
-            </h3>
-            <div className="flex flex-wrap gap-2 justify-center">
-              {[
-                "Laravel",
-                "Livewire",
-                "Vue.js",
-                "React.js",
-                "Flutter",
-                "Express.js",
-                "AdonisJS",
-              ].map((fw) => (
-                <span
-                  key={fw}
-                  className="bg-green-100 text-green-700 rounded px-3 py-1 text-sm font-semibold"
-                >
-                  {fw}
-                </span>
-              ))}
-            </div>
-          </Card>
-          <Card className="p-6 flex flex-col items-center transition-transform duration-200 hover:scale-105 hover:shadow-lg">
-            <Database
-              className="text-yellow-500 mb-2 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
-              size={32}
-            />
-            <h3 className="font-medium text-gray-800 mb-2 text-lg">
-              Bases de données
-            </h3>
-            <div className="flex flex-wrap gap-2 justify-center">
-              {["MySQL", "PostgreSQL", "MongoDB", "SQLite"].map((db) => (
-                <span
-                  key={db}
-                  className="bg-yellow-100 text-yellow-800 rounded px-3 py-1 text-sm font-semibold"
-                >
-                  {db}
-                </span>
-              ))}
-            </div>
-          </Card>
-          <Card className="p-6 flex flex-col items-center transition-transform duration-200 hover:scale-105 hover:shadow-lg">
-            <CreditCard
-              className="text-red-500 mb-2 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
-              size={32}
-            />
-            <h3 className="font-medium text-gray-800 mb-2 text-lg">
-              E-commerce & Paiement
-            </h3>
-            <div className="flex flex-wrap gap-2 justify-center">
-              {[
-                "Paiement en ligne",
-                "Apple Pay / Google Pay",
-              ].map((tag) => (
-                <span
-                  key={tag}
-                  className="bg-red-100 text-red-700 rounded px-3 py-1 text-sm font-semibold"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </Card>
-          <Card className="p-6 flex flex-col items-center transition-transform duration-200 hover:scale-105 hover:shadow-lg">
-            <Cpu
-              className="text-orange-500 mb-2 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
-              size={32}
-            />
-            <h3 className="font-medium text-gray-800 mb-2 text-lg">
-              Industrialisation & Perf
-            </h3>
-            <div className="flex flex-wrap gap-2 justify-center">
-              {[
-                "Migrations SQL",
-                "Jobs asynchrones",
-                "Index & requêtes",
-                "Optimisation",
-                "Docker",
-              ].map((tag) => (
-                <span
-                  key={tag}
-                  className="bg-orange-100 text-orange-700 rounded px-3 py-1 text-sm font-semibold"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </Card>
-          <Card className="p-6 flex flex-col items-center transition-transform duration-200 hover:scale-105 hover:shadow-lg">
-            <TrendingUp
-              className="text-indigo-500 mb-2 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
-              size={32}
-            />
-            <h3 className="font-medium text-gray-800 mb-2 text-lg">
-              Expérimentation & SEO
-            </h3>
-            <div className="flex flex-wrap gap-2 justify-center">
-              {[
-                "A/B testing",
-                "Statistiques",
-                "Google Merchant",
-                "SEO technique",
-                "Données structurées",
-              ].map((tag) => (
-                <span
-                  key={tag}
-                  className="bg-indigo-100 text-indigo-700 rounded px-3 py-1 text-sm font-semibold"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </Card>
-        </div>
+                </div>
+
+                {/* Title & Tagline */}
+                <h3 className="mb-2 text-xl font-bold tracking-tight text-[var(--text-primary)]">
+                  {group.title}
+                </h3>
+                <p className="mb-5 text-xs text-[var(--text-secondary)] leading-relaxed min-h-[34px]">
+                  {group.tagline}
+                </p>
+              </div>
+
+              {/* Skill chips */}
+              <div className="flex flex-wrap gap-2 pt-4 border-t border-[var(--border-subtle)]">
+                {group.items.map((item) => (
+                  <span
+                    key={item}
+                    className="skill-chip"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </article>
+          );
+        })}
       </div>
     </section>
   );

@@ -12,10 +12,10 @@ export default function NavbarMenuButton({
   return (
     <button
       type="button"
-      aria-label="Ouvrir le menu"
+      aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
       aria-expanded={open}
       onClick={toggle}
-      className="hover-smooth inline-flex h-9 w-9 items-center justify-center rounded-md border border-gray-200 bg-white text-gray-800 hover:bg-gray-50"
+      className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-zinc-900/80 text-zinc-300 transition-colors hover:border-emerald-500/40 hover:text-white cursor-pointer focus-visible:outline-2 focus-visible:outline-emerald-400"
     >
       {open ? <X size={18} /> : <Menu size={18} />}
     </button>

@@ -1,65 +1,30 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import type { Project } from "../../data/projects";
-import { Layers, Filter, RotateCcw, Github } from "lucide-react";
-import Card from "../ui/Card";
-import ImageModal from "../ui/projects/ImageModal";
-import ProjectTags from "../ui/projects/ProjectTags";
-import ProjectTechnologies from "../ui/projects/ProjectTechnologies";
 import ProjectModal from "../ui/projects/ProjectModal";
-import ProjectLink from "../ui/projects/ProjectLink";
-import ProjectDescription from "../ui/projects/ProjectDescription";
-import ProjectCategory from "../ui/projects/ProjectCategory";
-import Button from "../ui/Button";
+import { ArrowUpRight } from "lucide-react";
 
 type ProjectsProps = {
   items: Project[];
-  title?: string;
 };
 
-export default function Projects({ items, title = "Projets" }: ProjectsProps) {
-  const categories = useMemo(() => {
-    const set = new Set<string>();
-    for (const p of items) if (p.category) set.add(p.category);
-    return Array.from(set);
-  }, [items]);
-
-  const initialSelected = useMemo(
-    () => new Set<string>(categories.filter((k) => k !== "Académique")),
-    [categories]
-  );
-  const [selected, setSelected] = useState<Set<string>>(initialSelected);
-
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+export default function Projects({ items }: ProjectsProps) {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [filter, setFilter] = useState<string>("Tous");
 
-  const toggleKind = (k: string) => {
-    setSelected((prev) => {
-      const next = new Set(prev);
-      if (next.has(k)) next.delete(k);
-      else next.add(k);
-      return next;
-    });
-  };
+  const categories = [
+    { id: "Tous", label: "Tous" },
+    { id: "Professionnel", label: "Pro" },
+    { id: "Personnel", label: "Perso" },
+    { id: "Académique", label: "Académique" },
+  ];
 
-  const reset = () => setSelected(new Set(initialSelected));
-
-  const filtered = useMemo(() => {
-    return items.filter((p) => {
-      if (!p.category) return true;
-      return selected.has(p.category);
-    });
-  }, [items, selected]);
+  const filtered = items.filter((p) => {
+    if (filter === "Tous") return true;
+    return p.category === filter;
+  });
 
   return (
-    <section id="projets" className="border-b border-gray-200/60">
-      {/* Modale d'image */}
-      {selectedImage && (
-        <ImageModal
-          src={selectedImage}
-          alt="Aperçu du projet"
-          onClose={() => setSelectedImage(null)}
-        />
-      )}
+    <section id="projets" className="section-wrapper">
       {selectedProject && (
         <ProjectModal
           project={selectedProject}
@@ -67,135 +32,109 @@ export default function Projects({ items, title = "Projets" }: ProjectsProps) {
         />
       )}
 
-      <div className="mx-auto max-w-6xl px-4 py-12 md:py-16">
-        <div className="mb-6 flex flex-col justify-between gap-4 sm:mb-8 sm:flex-row sm:items-center">
-          <div className="flex items-center gap-2">
-            <div className="inline-flex h-9 w-9 items-center justify-center rounded-md bg-blue-600 text-white">
-              <Layers size={18} />
-            </div>
-            <h2 className="text-2xl font-bold tracking-tight">{title}</h2>
-            <Button
-              href="https://github.com/shad-x"
-              icon={<Github size={18} />}
-              aria-label="Voir mon GitHub"
-              title="Voir mon GitHub"
-              targetBlank={true}
-              variant="primary"
-              className="ml-4 hidden sm:inline-flex"
+      {/* Section Header with Category Tabs */}
+      <div className="section-head-split reveal-on-scroll">
+        <div>
+          <h2 className="section-title">
+            Projets<span className="counter">0{filtered.length}</span>
+          </h2>
+        </div>
+
+        {/* Filter Pills */}
+        <div className="flex flex-wrap items-center gap-1.5 p-1.5 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)]">
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              type="button"
+              onClick={() => setFilter(cat.id)}
+              aria-pressed={filter === cat.id}
+              className={`tab-filter-btn ${filter === cat.id ? "active" : ""}`}
             >
-              Voir mon GitHub
-            </Button>
-          </div>
-
-          {/* Filtres cumulables */}
-          {categories.length > 0 && (
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="inline-flex items-center gap-1 text-sm text-gray-600">
-                <Filter size={16} /> Filtrer par type
-              </span>
-              {categories.map((cat) => {
-                const active = selected.has(cat);
-                return (
-                  <button
-                    key={cat}
-                    type="button"
-                    onClick={() => toggleKind(cat)}
-                    aria-pressed={active}
-                    className={[
-                      "hover-smooth inline-flex items-center rounded-md border px-2.5 py-1.5 text-sm font-medium cursor-pointer",
-                      active
-                        ? "border-blue-600 bg-blue-600 text-white hover:bg-blue-700 hover:border-blue-700"
-                        : "border-gray-200 bg-white text-gray-700 hover:bg-gray-50",
-                    ].join(" ")}
-                  >
-                    {cat}
-                  </button>
-                );
-              })}
-              <button
-                type="button"
-                onClick={reset}
-                className="hover-smooth inline-flex items-center rounded-md border px-2.5 py-1.5 text-sm font-medium text-white cursor-pointer bg-blue-600 border-blue-600 hover:bg-blue-700 hover:border-blue-700"
-              >
-                <RotateCcw size={16} className="mr-1" /> Réinitialiser
-              </button>
-            </div>
-          )}
+              {cat.label}
+            </button>
+          ))}
         </div>
+      </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {filtered.length === 0 ? (
-            <div className="col-span-full flex items-center justify-center py-12 text-gray-500 text-lg">
-              Il n'y a aucun projet qui correspond à vos critères.
-            </div>
-          ) : (
-            filtered.map((p) => (
-              <Card
-                key={p.id}
-                className="flex flex-col group border border-gray-200 bg-white/90 backdrop-blur-sm transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-105 hover:shadow-2xl hover:shadow-gray-800/40 hover:border-blue-300 hover:bg-white cursor-pointer"
-                onClick={() => setSelectedProject(p)}
-              >
-                {/* Image */}
-                <div className="relative aspect-[16/9] overflow-hidden bg-gray-100">
-                  {p.imageSrc ? (
-                    <>
-                      <img
-                        src={p.imageSrc}
-                        alt={p.title}
-                        className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-104 group-hover:brightness-105"
-                        loading="lazy"
-                      />
-                      <button
-                        type="button"
-                        className="cursor-pointer absolute bottom-2 right-2 z-10 rounded-full bg-white/80 px-2 py-1 text-xs font-semibold text-blue-700 shadow hover:bg-blue-600 hover:text-white transition"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setSelectedImage(p.imageSrc as string);
-                        }}
-                        title="Agrandir l'image"
-                        aria-haspopup="dialog"
-                      >
-                        Ouvrir l’image
-                      </button>
-                    </>
-                  ) : (
-                    <div className="flex h-full w-full items-center justify-center text-xs text-gray-400">
-                      Pas d’image
-                    </div>
-                  )}
-                  <div className="pointer-events-none absolute left-3 top-3">
-                    <ProjectCategory category={p.category} />
-                  </div>
+      {/* Projects Grid: 1 col on mobile, 2 on tablet, 3 on desktop */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+        {filtered.map((proj, idx) => (
+          <article
+            key={proj.id}
+            onClick={() => setSelectedProject(proj)}
+            className={`project-card group reveal-on-scroll reveal-delay-${(idx % 3) + 1}`}
+          >
+            {/* Visual Thumbnail Frame */}
+            <div className="project-thumbnail">
+              {proj.imageSrc ? (
+                <img
+                  src={proj.imageSrc}
+                  alt={proj.title}
+                  loading="lazy"
+                  onError={(e) => {
+                    (e.target as HTMLElement).style.display = "none";
+                  }}
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center font-mono text-xs text-[var(--text-tertiary)] bg-[var(--bg-surface-elevated)]">
+                  Aperçu du projet
                 </div>
+              )}
 
-                {/* Séparateur */}
-                <hr className="border-t border-gray-200 w-full" />
-                {/* Body */}
-                <div className="flex flex-col gap-3 p-4 flex-1 relative pt-4">
-                  <h3 className="text-base font-semibold text-gray-900">
-                    {p.title}
-                  </h3>
-                  {p.description ? (
-                    <ProjectDescription description={p.description} />
-                  ) : null}
+              {/* Decorative Subtle Overlay Grid */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-surface)] via-transparent to-transparent opacity-60" />
 
-                  <ProjectTechnologies
-                    technologies={p.technologies}
-                    className="mt-1 mb-2"
+              {/* Top Meta Badges inside visual */}
+              <div className="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none">
+                <span className="pill-tag bg-[var(--bg-surface-glass)] backdrop-blur-md !text-[10px]">
+                  {proj.category || "Projet"}
+                </span>
+
+                {proj.technologies && proj.technologies.length > 0 && (
+                  <span className="font-mono text-xs text-[var(--accent-text)] bg-[var(--bg-surface-glass)] backdrop-blur-md px-2.5 py-1 rounded-md border border-[var(--border-subtle)]">
+                    {proj.technologies[0]}
+                  </span>
+                )}
+              </div>
+            </div>
+
+            {/* Content Body */}
+            <div className="project-content">
+              <div className="project-header">
+                <h3 className="project-title flex items-center gap-2">
+                  <span>{proj.title}</span>
+                  <ArrowUpRight
+                    size={16}
+                    className="text-[var(--text-tertiary)] group-hover:text-[var(--accent-text)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"
                   />
+                </h3>
+                <span className="project-index">
+                  #{String(idx + 1).padStart(2, "0")}
+                </span>
+              </div>
 
-                  <ProjectTags tags={p.tags} className="mb-4" />
+              <p className="project-desc line-clamp-3">
+                {proj.description}
+              </p>
 
-                  <div className="mt-2 flex items-center justify-between">
-                    <div className="absolute bottom-4 right-4 flex justify-end">
-                      <ProjectLink link={p.link} />
-                    </div>
-                  </div>
+              {/* Tech Stack Pills */}
+              <div className="project-footer">
+                <div className="flex flex-wrap gap-1.5">
+                  {proj.tags.slice(0, 4).map((tag) => (
+                    <span key={tag} className="pill-tag text-[10px]">
+                      {tag}
+                    </span>
+                  ))}
+                  {proj.tags.length > 4 && (
+                    <span className="pill-tag text-[10px] text-[var(--accent)] font-semibold">
+                      +{proj.tags.length - 4}
+                    </span>
+                  )}
                 </div>
-              </Card>
-            ))
-          )}
-        </div>
+              </div>
+            </div>
+          </article>
+        ))}
       </div>
     </section>
   );

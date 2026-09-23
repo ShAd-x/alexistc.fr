@@ -1,10 +1,12 @@
 import { useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 import type { Project } from "../../../data/projects";
 import ProjectDescription from "./ProjectDescription";
 import ProjectLink from "./ProjectLink";
 import ProjectTags from "./ProjectTags";
 import ProjectTechnologies from "./ProjectTechnologies";
 import ProjectCategory from "./ProjectCategory";
+import { X } from "lucide-react";
 
 type ProjectModalProps = {
   project: Project;
@@ -13,78 +15,106 @@ type ProjectModalProps = {
 
 export default function ProjectModal({ project, onClose }: ProjectModalProps) {
   const closeBtnRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function handleKey(e: KeyboardEvent) {
       if (e.key === "Escape") onClose();
+      if (e.key !== "Tab" || !dialogRef.current) return;
+
+      const focusable = dialogRef.current.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled])'
+      );
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last?.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first?.focus();
+      }
     }
     window.addEventListener("keydown", handleKey);
-    closeBtnRef.current?.focus();
     return () => window.removeEventListener("keydown", handleKey);
   }, [onClose]);
 
-  return (
+  useEffect(() => {
+    const previousFocus = document.activeElement as HTMLElement | null;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    closeBtnRef.current?.focus();
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      previousFocus?.focus();
+    };
+  }, []);
+
+  return createPortal(
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm"
       onClick={onClose}
       aria-modal="true"
+      aria-labelledby="project-dialog-title"
       role="dialog"
     >
       <div
-        className="relative max-w-xl w-full mx-4 bg-white rounded-xl shadow-lg p-6 animate-fade-in-scale"
+        ref={dialogRef}
+        className="relative flex max-h-[90vh] max-w-2xl w-full flex-col rounded-2xl border border-[var(--border-strong)] bg-[var(--bg-surface)] p-5 sm:p-7 text-[var(--text-primary)] shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           ref={closeBtnRef}
-          className="absolute top-2 right-2 z-10 rounded-full bg-white/90 p-2 hover:bg-blue-600 hover:text-white text-blue-700 transition cursor-pointer"
+          type="button"
+          className="absolute top-4 right-4 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-[var(--border-strong)] bg-[var(--bg-surface-elevated)] text-[var(--text-primary)] transition-colors hover:border-[var(--border-accent)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-text)] cursor-pointer"
           onClick={onClose}
           aria-label="Fermer la fiche projet"
           title="Fermer la fiche projet"
         >
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-            <circle
-              cx="14"
-              cy="14"
-              r="13"
-              fill="currentColor"
-              className="opacity-10"
-            />
-            <path
-              d="M9 9L19 19M19 9L9 19"
-              stroke="currentColor"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-            />
-          </svg>
+          <X size={16} />
         </button>
-        {project.imageSrc && (
-          <img
-            src={project.imageSrc}
-            alt={project.title}
-            className="rounded-lg shadow mb-4 w-full max-h-60 object-cover"
-          />
-        )}
-        <div className="mb-2 flex items-center gap-2">
-          <ProjectCategory category={project.category} />
-          <h2 className="text-xl font-bold text-gray-900">{project.title}</h2>
-        </div>
-        <div className="mb-3">
-          <ProjectDescription
-            description={project.description}
-            expandedByDefault={true}
-            disableToggle={true}
-          />
-        </div>
-        <ProjectTechnologies
-          technologies={project.technologies}
-          className="mb-2"
-        />
-        <ProjectTags tags={project.tags} className="mb-2" />
 
-        <div className="flex items-center justify-end mt-4">
+        <div className="min-h-0 overflow-y-auto pr-1">
+          {project.imageSrc && (
+            <div className="relative mb-5 h-48 sm:h-60 overflow-hidden rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface-elevated)]">
+              <img
+                src={project.imageSrc}
+                alt={project.title}
+                className="h-full w-full object-contain"
+              />
+            </div>
+          )}
+
+          <div className="mb-3 flex flex-wrap items-center gap-2">
+            <ProjectCategory category={project.category} />
+            <h2 id="project-dialog-title" className="text-xl font-bold tracking-tight text-[var(--text-primary)]">{project.title}</h2>
+          </div>
+
+          <div className="mb-4">
+            <ProjectDescription
+              description={project.description}
+              expandedByDefault={true}
+              disableToggle={true}
+            />
+          </div>
+
+          <div className="space-y-3 pt-3 border-t border-[var(--border-subtle)]">
+            <div>
+              <p className="text-xs font-mono text-[var(--text-tertiary)] mb-1.5">Technologies</p>
+              <ProjectTechnologies technologies={project.technologies} />
+            </div>
+            <div>
+              <p className="text-xs font-mono text-[var(--text-tertiary)] mb-1.5">Tags</p>
+              <ProjectTags tags={project.tags} />
+            </div>
+          </div>
+        </div>
+
+        <div className="flex shrink-0 items-center justify-end mt-5 pt-4 border-t border-[var(--border-subtle)]">
           <ProjectLink link={project.link} />
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 type ProjectDescriptionProps = {
   description: string;
@@ -23,12 +24,12 @@ export default function ProjectDescription({
 
   return (
     <div>
-      <p className="text-sm text-gray-600">{displayText}</p>
+      <p className="text-sm leading-relaxed text-[var(--text-secondary)]">{displayText}</p>
       {isLong && !disableToggle && (
         <div className="mt-2">
           <button
             type="button"
-            className="cursor-pointer inline-flex items-center gap-1 rounded-full border border-blue-200 bg-blue-50 px-2 py-0.5 text-xs font-semibold text-blue-700 shadow-sm transition hover:bg-blue-600 hover:text-white hover:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-300"
+            className="cursor-pointer inline-flex items-center gap-1 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-surface-elevated)] px-2.5 py-0.5 text-xs font-medium text-[var(--text-secondary)] transition hover:border-[var(--border-accent)] hover:text-[var(--text-primary)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-text)]"
             onClick={(e) => {
               e.stopPropagation();
               setExpanded((v) => !v);
@@ -36,37 +37,13 @@ export default function ProjectDescription({
           >
             {expanded ? (
               <>
-                Voir moins
-                <svg
-                  className="w-3 h-3 ml-1"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 10L8 6 4 10"
-                  />
-                </svg>
+                <span>Voir moins</span>
+                <ChevronUp size={12} />
               </>
             ) : (
               <>
-                Voir plus
-                <svg
-                  className="w-3 h-3 ml-1"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M4 6l4 4 4-4"
-                  />
-                </svg>
+                <span>Voir plus</span>
+                <ChevronDown size={12} />
               </>
             )}
           </button>

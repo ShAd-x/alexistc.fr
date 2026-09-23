@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr" class="dark scroll-smooth">
   <head>
     <meta charset="UTF-8" />
 
@@ -19,8 +19,10 @@
     <link rel="icon" type="image/png" sizes="512x512" href="/icons/favicon-512x512.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
 
-    <!-- Viewport -->
+    <!-- Viewport & Theme -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#090a0f" />
+    <meta name="color-scheme" content="dark" />
 
     <!-- Robots -->
     <meta name="robots" content="index, follow" />
@@ -80,14 +82,15 @@
       }
     </script>
 
-    <!-- Preload -->
-    <link rel="preload" href="/src/assets/fonts/Inter-Variable.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <!-- Preload Fonts & Hero Image -->
+    <link rel="preload" href="/src/assets/fonts/PlusJakartaSans-Variable.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="/src/assets/fonts/JetBrainsMono-Variable.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
     <link rel="preload" href="/img/me.webp" as="image" type="image/webp" />
 
     <!-- Umami Analytics -->
     <script defer src="https://analytics.alexistc.fr/script.js" data-website-id="dff9640b-b113-46e3-886b-8967b8cbd0ce" data-domains="alexistc.fr"></script>
   </head>
-  <body class="min-h-screen antialiased transition-colors">
+  <body class="antialiased">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

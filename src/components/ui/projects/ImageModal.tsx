@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { X } from "lucide-react";
 
 type ImageModalProps = {
   src: string;
@@ -24,42 +25,28 @@ export default function ImageModal({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4 backdrop-blur-md"
       onClick={onClose}
       aria-modal="true"
       role="dialog"
     >
       <div
-        className="relative max-w-xl w-full mx-4"
+        className="relative max-w-3xl w-full rounded-2xl border border-white/15 bg-zinc-950 p-2 shadow-2xl animate-fade-in-scale"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           ref={closeBtnRef}
-          className="absolute top-2 right-2 z-10 rounded-full bg-white/90 p-2 hover:bg-blue-600 hover:text-white text-blue-700 transition cursor-pointer"
+          className="absolute top-4 right-4 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-zinc-900/90 text-zinc-300 transition-colors hover:border-emerald-500/40 hover:bg-zinc-800 hover:text-white cursor-pointer"
           onClick={onClose}
           aria-label="Fermer l’aperçu"
           title="Fermer l’aperçu"
         >
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-            <circle
-              cx="14"
-              cy="14"
-              r="13"
-              fill="currentColor"
-              className="opacity-10"
-            />
-            <path
-              d="M9 9L19 19M19 9L9 19"
-              stroke="currentColor"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-            />
-          </svg>
+          <X size={18} />
         </button>
         <img
           src={src}
           alt={alt}
-          className="rounded-lg shadow-lg w-full max-h-[60vh] object-contain bg-white"
+          className="rounded-xl w-full max-h-[80vh] object-contain"
         />
       </div>
     </div>
