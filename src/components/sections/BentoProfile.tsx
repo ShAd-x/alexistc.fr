@@ -32,7 +32,7 @@ export default function BentoProfile() {
               Alexis Tatarkovic
             </h3>
             <p className="text-sm text-[var(--text-secondary)] mt-2.5 leading-relaxed">
-              Basé à <strong className="text-[var(--text-primary)] font-semibold">Rouen</strong>, je travaille principalement à distance et en Normandie. Co-fondateur du studio web <strong className="text-[var(--text-primary)] font-semibold">atcode</strong>, je conçois et développe des applications web et mobiles.
+              Basé à <strong className="text-[var(--text-primary)] font-semibold">Rouen</strong>, je travaille principalement à distance et en Normandie. Je suis co-fondateur d’<strong className="text-[var(--text-primary)] font-semibold">atcode</strong>, une agence web indépendante où je conçois et développe des applications web et mobiles.
             </p>
             <p className="text-sm text-[var(--text-secondary)] mt-3 leading-relaxed">
               J'interviens sur le développement full-stack, de l'interface aux API et à la mise en production. Je suis ouvert aux missions freelance et aux collaborations.

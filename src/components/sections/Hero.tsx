@@ -25,8 +25,8 @@ export default function Hero() {
             <span>Voir les projets</span>
             <ArrowDown size={14} />
           </a>
-          <a href="https://atcode.fr/" target="_blank" rel="noopener noreferrer" className="btn-secondary">
-            <span>Studio web atcode</span>
+          <a href="https://atcode.fr/?utm_source=alexistc.fr&utm_medium=portfolio&utm_campaign=profile&ref=alexistc.fr" target="_blank" rel="noopener noreferrer" className="btn-secondary">
+            <span>atcode, agence web indépendante</span>
             <ArrowUpRight size={14} />
           </a>
         </div>

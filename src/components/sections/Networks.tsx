@@ -298,7 +298,7 @@ export default function Networks() {
 
         {/* atcode.fr */}
         <a
-          href="https://atcode.fr/"
+          href="https://atcode.fr/?utm_source=alexistc.fr&utm_medium=portfolio&utm_campaign=profile&ref=alexistc.fr"
           target="_blank"
           rel="noopener noreferrer"
           className="network-card reveal-on-scroll reveal-delay-4 group"
@@ -314,7 +314,7 @@ export default function Networks() {
               atcode.fr
             </div>
             <div className="text-xs text-[var(--text-secondary)] mt-1">
-              Studio web atcode
+              Agence web indépendante
             </div>
           </div>
         </a>

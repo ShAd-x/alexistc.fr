@@ -83,12 +83,12 @@ export default function Contact({ email }: ContactProps) {
 
           <div className="pt-8 mt-6 border-t border-[var(--border-subtle)]">
             <a
-              href="https://atcode.fr"
+              href="https://atcode.fr/?utm_source=alexistc.fr&utm_medium=portfolio&utm_campaign=profile&ref=alexistc.fr"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm font-medium text-[var(--accent-text)] hover:underline inline-flex items-center gap-1"
             >
-              <span>Studio web atcode</span>
+              <span>atcode, agence web indépendante</span>
               <ArrowUpRight size={14} />
             </a>
           </div>
