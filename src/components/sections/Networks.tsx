@@ -38,6 +38,37 @@ function parseContributions(value: unknown): ContributionDay[] {
   return [...contributions].sort((a, b) => a.date.localeCompare(b.date));
 }
 
+function getParisDateString(date = new Date()): string {
+  const values = Object.fromEntries(
+    new Intl.DateTimeFormat("en-CA", {
+      timeZone: "Europe/Paris",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    })
+      .formatToParts(date)
+      .map(({ type, value }) => [type, value]),
+  ) as Record<string, string>;
+  return `${values.year}-${values.month}-${values.day}`;
+}
+
+function includeParisToday(contributions: ContributionDay[]): ContributionDay[] {
+  const days = [...contributions];
+  if (days.length === 0) return days;
+
+  const lastDate = days[days.length - 1].date;
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(lastDate)) return days;
+  const cursor = new Date(`${lastDate}T00:00:00Z`);
+  if (Number.isNaN(cursor.getTime())) return days;
+
+  const today = getParisDateString();
+  while (cursor.toISOString().slice(0, 10) < today) {
+    cursor.setUTCDate(cursor.getUTCDate() + 1);
+    days.push({ date: cursor.toISOString().slice(0, 10), count: 0, level: 0 });
+  }
+  return days;
+}
+
 function dateFromIso(isoDate: string): Date {
   return new Date(`${isoDate}T12:00:00`);
 }
@@ -119,7 +150,7 @@ export default function Networks() {
       try {
         const response = await fetch(CONTRIBUTIONS_URL, { signal: controller.signal });
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        setContributions(parseContributions(await response.json()));
+        setContributions(includeParisToday(parseContributions(await response.json())));
       } catch {
         if (!controller.signal.aborted) setLoadError(true);
       }
